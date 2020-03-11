@@ -76,8 +76,11 @@ e_r(z)=|\frac{x}{x-y}||e_r(x)|+|\frac{y}{x-y}||e_r(x)|</script><script type="mat
 <p>$\frac{1-e^x}{x}=\frac{x+\frac{1}{2!}x^2+…+\frac{1}{n!}x^2}{x}=1+\frac{1}{2!}x+\frac{1}{3!}x^2+…+\frac{1}{n!}x^{n-1}$</p>
 </li>
 </ol>
-<h2 id="补充：-x-1x-2-的绝对误差限"><a href="#补充：-x-1x-2-的绝对误差限" class="headerlink" title="补充：$x_1x_2$的绝对误差限"></a>补充：$x_1x_2$的绝对误差限</h2><p>$x_1\approx x_1,x_2\approx x_2$<br>$|x_1x_2-x_1^<em>x_2^</em>|=|x_1x_2-x_1x_2^<em>+x_1x_2^</em>-x_1^<em>x_2^</em>|$<br>                        $\le|x_1||x_2-x_2^<em>|+|x_2^</em>||x_1-x_1^*|$<br>                        $=|x_1||e(x_2)|+|x_2||e(x_1)|$</p>
-]]></content>
+<h2 id="补充：-x-1x-2-的绝对误差限"><a href="#补充：-x-1x-2-的绝对误差限" class="headerlink" title="补充：$x_1x_2$的绝对误差限"></a>补充：$x_1x_2$的绝对误差限</h2><p>$x_1\approx x_1,x_2\approx x_2$</p>
+<script type="math/tex; mode=display">
+|x_1x_2-x_1^*x_2^*|=|x_1x_2-x_1x_2^*+x_1x_2^*-x_1^*x_2^*|</script><script type="math/tex; mode=display">
+\le|x_1||x_2-x_2^*|+|x_2^*||x_1-x_1^*|</script><script type="math/tex; mode=display">
+                        =|x_1||e(x_2)|+|x_2||e(x_1)|</script>]]></content>
       <categories>
         <category>数值分析笔记</category>
       </categories>
