@@ -22,19 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="jquery-lazyload for NexT  Installation  Step 1 &amp;rarr; Go to NexT dir  Change dir to NexT directory. There must be layout, source, languages and other directories: 123$ cd themes&#x2F;next$ lsbower.json  _c">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Dylan&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/lib/jquery_lazyload/README.html">
+  <meta name="description" content="误差分析误差的来源与分类 观测误差 模型误差 截断误差：近似计算出现的误差">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值分析&gt;&gt;第一章&gt;&gt;误差分析">
+<meta property="og:url" content="http://yoursite.com/2020/03/11/mathAnalysis-1-1/index.html">
 <meta property="og:site_name" content="Dylan&#39;s Blog">
-<meta property="og:description" content="jquery-lazyload for NexT  Installation  Step 1 &amp;rarr; Go to NexT dir  Change dir to NexT directory. There must be layout, source, languages and other directories: 123$ cd themes&#x2F;next$ lsbower.json  _c">
+<meta property="og:description" content="误差分析误差的来源与分类 观测误差 模型误差 截断误差：近似计算出现的误差">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-10T14:15:42.647Z">
-<meta property="article:modified_time" content="2020-03-10T14:15:42.647Z">
+<meta property="article:published_time" content="2020-03-11T06:52:39.000Z">
+<meta property="article:modified_time" content="2020-03-11T13:31:11.660Z">
 <meta property="article:author" content="Dylan">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/lib/jquery_lazyload/README">
+<link rel="canonical" href="http://yoursite.com/2020/03/11/mathAnalysis-1-1/">
 
 
 <script id="page-configurations">
@@ -42,12 +43,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title> | Dylan's Blog
-  </title>
+  <title>数值分析>>第一章>>误差分析 | Dylan's Blog</title>
   
 
 
@@ -187,77 +187,158 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
-      <header class="post-header">
-
-<h1 class="post-title" itemprop="name headline">
-</h1>
-
-<div class="post-meta">
+      
   
-  <ul class="breadcrumb">
-          
-            <li><a href="/lib/">LIB</a></li>
-            <li><a href="/lib/jquery_lazyload/">JQUERY_LAZYLOAD</a></li>
-            <li>README</li>
-          
-  </ul>
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/mathAnalysis-1-1/">
 
-</div>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Dylan">
+      <meta itemprop="description" content="">
+    </span>
 
-</header>
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dylan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数值分析>>第一章>>误差分析
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-11 14:52:39 / 修改时间：21:31:11" itemprop="dateCreated datePublished" datetime="2020-03-11T14:52:39+08:00">2020-03-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">数值分析笔记</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.4k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-clock-o"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-      
-      
-      <div class="post-body">
-          <h1 align="center"><a href="https://github.com/tuupola/jquery_lazyload" target="_blank" rel="noopener">jquery-lazyload</a> for <a href="https://github.com/theme-next" target="_blank" rel="noopener">NexT</a></h1>
+        <h1 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h1><h2 id="误差的来源与分类"><a href="#误差的来源与分类" class="headerlink" title="误差的来源与分类"></a>误差的来源与分类</h2><ul>
+<li>观测误差</li>
+<li>模型误差</li>
+<li>截断误差：近似计算出现的误差<a id="more"></a></li>
+<li>舍入误差：由于计算级只能进行有限位的运算而产生的误差</li>
+<li>绝对误差:  $e=x^{*}-x$ 其中e为绝对误差<br>如果$\epsilon$满足：<br>  $|e|\leq\epsilon$, 则$\epsilon$为$x$的绝对误差限</li>
+<li>相对误差：<br>  $e_r = \frac{x^* - x}{x} = \frac{e}{x}$, $e_r$为相对误差</li>
+<li>相对误差限：<br>  $\epsilon_r=\frac{\epsilon}{|x|}$, $\epsilon_r$为相对误差限，同时$|e_r|\le\epsilon_r$</li>
+</ul>
+<h2 id="有效数字"><a href="#有效数字" class="headerlink" title="有效数字"></a>有效数字</h2><ul>
+<li>有效数字与绝对误差限的关系：<script type="math/tex; mode=display">
+|x^*-x|\leq\frac{1}{2}\times10^{m-n},其中n为有效数字的位数。</script><script type="math/tex; mode=display">
+m为x^*化为标准浮点数形式下的10m次幂。</script>注：精确值的有效数字有无穷多位！</li>
+<li><p>有效数字和相对误差限的关系(其中$a_1$为$x$化为标准浮点数下小数点后第一个非零的数)：</p>
+<ul>
+<li><p>已知有效位数$n$:<br>  $\epsilon_r\le\frac{1}{2a_1}\times10^{-n+1}$</p>
+</li>
+<li><p>已知$x$的相对误差限:<br>  $\epsilon_r\le\frac{1}{2(a_1+1)}\times10^{-n+1}$</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="数值计算中的若干原则"><a href="#数值计算中的若干原则" class="headerlink" title="数值计算中的若干原则"></a>数值计算中的若干原则</h2><ul>
+<li>避免两个相近的数相减（使用其他算法，公式？乘除？）<script type="math/tex; mode=display">
+假设z=x-y,z^*=x^*-y^*,那么：</script><script type="math/tex; mode=display">
+e_r(z)=|\frac{x}{x-y}||e_r(x)|+|\frac{y}{x-y}||e_r(x)|</script><script type="math/tex; mode=display">
+从该式中我们可以看出z的相对误差会特别大</script></li>
+<li><p>防止“大数”吃掉小数（改变运算顺序？）</p>
+</li>
+<li><p>绝对值太小的数不宜做除数</p>
+<script type="math/tex; mode=display">
+  假设z=x \div y,z^* = x^* \div y^*,那么：</script><script type="math/tex; mode=display">
+  e(z)=|z^*-z|=|\frac{y(x^*-x)+x(y-y^*)}{yy*}|\approx \frac{|y||e(x)|+|x||e(y)|}{y^2}​</script><p>  则如果$y$的绝对值太小，那么$z$的绝对误差较大</p>
+</li>
+<li><p>注意简化计算程序，减少计算次数（舍入误差的积累和计算的时间）</p>
+</li>
+<li><p>选用数值稳定性好的算法</p>
+</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><ol>
+<li><p>将下列表达式进行等价变形，使其数值计算结果较为精确。</p>
+<p>(1) $\frac{1}{1-2x}-\frac{1+x}{1-x},|x|&lt;&lt;1$</p>
+<p>解：$原式=\frac{2x^2}{(1-2x)(1-x)}$</p>
+<p>(2)$\frac{1-e^x}{x},|x|&lt;&lt;1$</p>
+<p>解：由$e^x$在x=0处的泰勒展开式可得：</p>
+<p>$e^x= 1+x+\frac{1}{2!}x^2+…+\frac{1}{n!}x^2+R_n(x)$</p>
+<p>所以</p>
+<p>$\frac{1-e^x}{x}=\frac{x+\frac{1}{2!}x^2+…+\frac{1}{n!}x^2}{x}=1+\frac{1}{2!}x+\frac{1}{3!}x^2+…+\frac{1}{n!}x^{n-1}$</p>
+</li>
+</ol>
+<h2 id="补充：-x-1x-2-的绝对误差限"><a href="#补充：-x-1x-2-的绝对误差限" class="headerlink" title="补充：$x_1x_2$的绝对误差限"></a>补充：$x_1x_2$的绝对误差限</h2><p>$x_1\approx x_1,x_2\approx x_2$<br>$|x_1x_2-x_1^<em>x_2^</em>|=|x_1x_2-x_1x_2^<em>+x_1x_2^</em>-x_1^<em>x_2^</em>|$<br>                        $\le|x_1||x_2-x_2^<em>|+|x_2^</em>||x_1-x_1^*|$<br>                        $=|x_1||e(x_2)|+|x_2||e(x_1)|$</p>
 
-<h1 align="center">Installation</h1>
-
-<h2 align="center">Step 1 &rarr; Go to NexT dir</h2>
-
-<p>Change dir to <strong>NexT</strong> directory. There must be <code>layout</code>, <code>source</code>, <code>languages</code> and other directories:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next</span><br><span class="line">$ ls</span><br><span class="line">bower.json  _config.yml  docs  gulpfile.coffee  languages  layout  LICENSE.md  package.json  README.md  scripts  <span class="built_in">source</span>  <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
-<h2 align="center">Step 2 &rarr; Get module</h2>
-
-<p>Install module to <code>source/lib</code> directory:</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git <span class="built_in">clone</span> https://github.com/theme-next/theme-next-jquery-lazyload <span class="built_in">source</span>/lib/jquery_lazyload</span><br></pre></td></tr></table></figure>
-<h2 align="center">Step 3 &rarr; Set it up</h2>
-
-<p>Enable module in <strong>NexT</strong> <code>_config.yml</code> file:</p>
-<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">lazyload:</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-<h1 align="center">Update</h1>
-
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> themes/next/<span class="built_in">source</span>/lib/jquery_lazyload</span><br><span class="line">$ git pull</span><br></pre></td></tr></table></figure>
-
-      </div>
-      
-      
-      
     </div>
-    
-  <ul class="breadcrumb">
-          
-            <li><a href="/lib/">LIB</a></li>
-            <li><a href="/lib/jquery_lazyload/">JQUERY_LAZYLOAD</a></li>
-            <li>README</li>
-          
-  </ul>
 
     
     
     
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2020/03/11/mathAnalysis-2-1/" rel="next" title="数值分析>>第二章>>顺序Gauss消去法">
+      数值分析>>第二章>>顺序Gauss消去法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
   </div>
 
 
@@ -309,7 +390,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">1.</span> <span class="nav-text">jquery-lazyload for NexT</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text">Installation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.1.</span> <span class="nav-text">Step 1 &amp;rarr; Go to NexT dir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.2.</span> <span class="nav-text">Step 2 &amp;rarr; Get module</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.3.</span> <span class="nav-text">Step 3 &amp;rarr; Set it up</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#"><span class="nav-number">3.</span> <span class="nav-text">Update</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#误差分析"><span class="nav-number">1.</span> <span class="nav-text">误差分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#误差的来源与分类"><span class="nav-number">1.1.</span> <span class="nav-text">误差的来源与分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有效数字"><span class="nav-number">1.2.</span> <span class="nav-text">有效数字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数值计算中的若干原则"><span class="nav-number">1.3.</span> <span class="nav-text">数值计算中的若干原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例题"><span class="nav-number">1.4.</span> <span class="nav-text">例题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#补充：-x-1x-2-的绝对误差限"><span class="nav-number">1.5.</span> <span class="nav-text">补充：$x_1x_2$的绝对误差限</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
