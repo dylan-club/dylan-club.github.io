@@ -1,6 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数值分析&gt;&gt;第二章&gt;&gt;平方根法</title>
+    <url>/2020/10/05/mathAnyalsis-2-3/</url>
+    <content><![CDATA[<h1 id="平方根法（Cholesky分解）"><a href="#平方根法（Cholesky分解）" class="headerlink" title="平方根法（Cholesky分解）"></a>平方根法（Cholesky分解）</h1><h2 id="引入：对称正定矩阵"><a href="#引入：对称正定矩阵" class="headerlink" title="引入：对称正定矩阵"></a>引入：对称正定矩阵</h2><ul>
+<li>矩阵各元素的各元素沿主对角线对称</li>
+<li>矩阵的所有特征值均大于零</li>
+</ul>
+<a id="more"></a>
+<h2 id="平方根法的使用条件"><a href="#平方根法的使用条件" class="headerlink" title="平方根法的使用条件"></a>平方根法的使用条件</h2><ul>
+<li>$A$为对称正定矩阵，且$U_{kk}&gt;0$。</li>
+</ul>
+<h2 id="平方根法的步骤"><a href="#平方根法的步骤" class="headerlink" title="平方根法的步骤"></a>平方根法的步骤</h2><ul>
+<li>$A=UU^T$,只需要计算$U$即可。</li>
+<li>计算顺序：计算下三角矩阵$U$的第一列、第二列……依此类推。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第二章&gt;&gt;直接三角分解法</title>
+    <url>/2020/10/05/mathAnalysis-2-2/</url>
+    <content><![CDATA[<h1 id="直接三角分解法"><a href="#直接三角分解法" class="headerlink" title="直接三角分解法"></a>直接三角分解法</h1><h2 id="定义（顺序Gauss消去法的矩阵形式）"><a href="#定义（顺序Gauss消去法的矩阵形式）" class="headerlink" title="定义（顺序Gauss消去法的矩阵形式）"></a>定义（顺序Gauss消去法的矩阵形式）</h2><ul>
+<li>将系数矩阵$A$分解成$A=LU$（单位下三角矩阵$L$和上三角矩阵$U$）</li>
+</ul>
+<script type="math/tex; mode=display">
+Ax=b\Rightarrow
+\begin{cases}
+Ux=y \\
+Ly=b
+\end{cases}</script><a id="more"></a>
+<ul>
+<li>充要条件$A$的各阶顺序主子式不为零</li>
+</ul>
+<h2 id="获取-L-矩阵和-U-矩阵的方法"><a href="#获取-L-矩阵和-U-矩阵的方法" class="headerlink" title="获取$L$矩阵和$U$矩阵的方法"></a>获取$L$矩阵和$U$矩阵的方法</h2><ul>
+<li>先求$U$矩阵的第一行，再求$L$矩阵的第一列，以此类推。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数值分析&gt;&gt;第二章&gt;&gt;顺序Gauss消去法</title>
     <url>/2020/03/11/mathAnalysis-2-1/</url>
     <content><![CDATA[<h1 id="顺序Gauss消去法"><a href="#顺序Gauss消去法" class="headerlink" title="顺序Gauss消去法"></a>顺序Gauss消去法</h1><h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><ul>

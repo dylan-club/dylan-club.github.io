@@ -22,17 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+  <meta name="description" content="平方根法（Cholesky分解）引入：对称正定矩阵 矩阵各元素的各元素沿主对角线对称 矩阵的所有特征值均大于零">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数值分析&gt;&gt;第二章&gt;&gt;平方根法">
+<meta property="og:url" content="http://yoursite.com/2020/10/05/mathAnyalsis-2-3/index.html">
 <meta property="og:site_name" content="Dylan&#39;s Blog">
+<meta property="og:description" content="平方根法（Cholesky分解）引入：对称正定矩阵 矩阵各元素的各元素沿主对角线对称 矩阵的所有特征值均大于零">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-11T04:09:03.000Z">
-<meta property="article:modified_time" content="2020-03-11T04:10:08.687Z">
+<meta property="article:published_time" content="2020-10-05T12:41:59.000Z">
+<meta property="article:modified_time" content="2020-10-05T12:56:01.582Z">
 <meta property="article:author" content="Dylan">
+<meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/tags/">
+<link rel="canonical" href="http://yoursite.com/2020/10/05/mathAnyalsis-2-3/">
 
 
 <script id="page-configurations">
@@ -40,12 +43,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false
+    isPost : true
   };
 </script>
 
-  <title>标签 | Dylan's Blog
-  </title>
+  <title>数值分析>>第二章>>平方根法 | Dylan's Blog</title>
   
 
 
@@ -185,52 +187,111 @@
       <div class="main-inner">
         <div class="content-wrap">
           
-  
-  
 
           <div class="content">
             
 
   <div class="posts-expand">
-    
-    
-    
-    <div class="post-block" lang="zh-CN">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/05/mathAnyalsis-2-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="Dylan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Dylan's Blog">
+    </span>
       <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          数值分析>>第二章>>平方根法
+        </h1>
 
-<h1 class="post-title" itemprop="name headline">标签
-</h1>
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
-<div class="post-meta">
+              <time title="创建时间：2020-10-05 20:41:59 / 修改时间：20:56:01" itemprop="dateCreated datePublished" datetime="2020-10-05T20:41:59+08:00">2020-10-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%80%BC%E5%88%86%E6%9E%90%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">数值分析笔记</span></a>
+                </span>
+            </span>
+
+          
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-file-word-o"></i>
+              </span>
+              <span>145</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="平方根法（Cholesky分解）"><a href="#平方根法（Cholesky分解）" class="headerlink" title="平方根法（Cholesky分解）"></a>平方根法（Cholesky分解）</h1><h2 id="引入：对称正定矩阵"><a href="#引入：对称正定矩阵" class="headerlink" title="引入：对称正定矩阵"></a>引入：对称正定矩阵</h2><ul>
+<li>矩阵各元素的各元素沿主对角线对称</li>
+<li>矩阵的所有特征值均大于零</li>
+</ul>
+<a id="more"></a>
+<h2 id="平方根法的使用条件"><a href="#平方根法的使用条件" class="headerlink" title="平方根法的使用条件"></a>平方根法的使用条件</h2><ul>
+<li>$A$为对称正定矩阵，且$U_{kk}&gt;0$。</li>
+</ul>
+<h2 id="平方根法的步骤"><a href="#平方根法的步骤" class="headerlink" title="平方根法的步骤"></a>平方根法的步骤</h2><ul>
+<li>$A=UU^T$,只需要计算$U$即可。</li>
+<li>计算顺序：计算下三角矩阵$U$的第一列、第二列……依此类推。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag"><i class="fa fa-tag"></i> 数学</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/10/05/mathAnalysis-2-2/" rel="prev" title="数值分析>>第二章>>直接三角分解法">
+      <i class="fa fa-chevron-left"></i> 数值分析>>第二章>>直接三角分解法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
   
 
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
-          <div class="tag-cloud">
-            <div class="tag-cloud-title">
-              目前共计 1 个标签
-            </div>
-            <div class="tag-cloud-tags">
-              <a href="/tags/%E6%95%B0%E5%AD%A6/" style="font-size: 12px; color: #ccc">数学</a>
-            </div>
-          </div>
-        
-      </div>
-      
-      
-      
-    </div>
-    
-
-    
-    
-    
   </div>
 
 
@@ -282,6 +343,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#平方根法（Cholesky分解）"><span class="nav-number">1.</span> <span class="nav-text">平方根法（Cholesky分解）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引入：对称正定矩阵"><span class="nav-number">1.1.</span> <span class="nav-text">引入：对称正定矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平方根法的使用条件"><span class="nav-number">1.2.</span> <span class="nav-text">平方根法的使用条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平方根法的步骤"><span class="nav-number">1.3.</span> <span class="nav-text">平方根法的步骤</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
