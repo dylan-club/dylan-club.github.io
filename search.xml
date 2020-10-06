@@ -1,6 +1,282 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>基础算法常用模板</title>
+    <url>/2020/10/06/algorithmTemplate-1/</url>
+    <content><![CDATA[<h1 id="基础算法常用模板"><a href="#基础算法常用模板" class="headerlink" title="基础算法常用模板"></a>基础算法常用模板</h1><p>持续更新中~<br><a id="more"></a></p>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="comment">//终止</span></span><br><span class="line">    <span class="keyword">if</span>(left &gt;= right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//分治</span></span><br><span class="line">    <span class="keyword">int</span> i=left-<span class="number">1</span>, j=right+<span class="number">1</span>, x=arr[(left+right)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(arr[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(arr[j] &gt; x);</span><br><span class="line">        <span class="comment">//交换</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//递归</span></span><br><span class="line">    quickSort(arr, left, j);</span><br><span class="line">    quickSort(arr, j+<span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="comment">//终止</span></span><br><span class="line">    <span class="keyword">if</span>(left == right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    mergeSort(arr, left, mid);</span><br><span class="line">    mergeSort(arr, mid+<span class="number">1</span>, right);</span><br><span class="line">    <span class="comment">//分治</span></span><br><span class="line">    <span class="keyword">int</span> i=left, j=mid+<span class="number">1</span>, k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right)&#123;</span><br><span class="line">        <span class="comment">//temp数组用于临时存放left到right的有序数列</span></span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt;= arr[j]) temp[k++] = arr[i++]; </span><br><span class="line">        <span class="keyword">else</span> temp[k++] = arr[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将剩余的数依次放到temp数组</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) temp[k++] = arr[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=right) temp[k++] = arr[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//归位</span></span><br><span class="line">    <span class="keyword">for</span>(i=left, j=<span class="number">0</span>; i &lt;= right; i++, j++) arr[i] = temp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="二分查找-两种情况"><a href="#二分查找-两种情况" class="headerlink" title="二分查找(两种情况)"></a>二分查找(两种情况)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bSearch_1</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//初值,n为arr的长度</span></span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//两者的区别</span></span><br><span class="line">        <span class="comment">//check()为判断边界条件是否满足，满足返回true</span></span><br><span class="line">        <span class="keyword">if</span>(check()) right = mid; <span class="comment">//满足区间在左半边</span></span><br><span class="line">        <span class="keyword">else</span> left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bSearch_2</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//初值,n为arr的长度</span></span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + right + <span class="number">1</span> &gt;&gt; <span class="number">1</span>; <span class="comment">//两者的区别</span></span><br><span class="line">        <span class="comment">//check()为判断边界条件是否满足，满足返回true</span></span><br><span class="line">        <span class="keyword">if</span>(check()) left = mid; <span class="comment">//满足区间在右半边</span></span><br><span class="line">        <span class="keyword">else</span> right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意：浮点数二分可以用于开n次方，也不用判断边界条件</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>算法模板</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>排序</tag>
+        <tag>二分查找</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第三章&gt;&gt;三种迭代法的矩阵表示形式</title>
+    <url>/2020/10/05/mathAnalysis-3-4/</url>
+    <content><![CDATA[<h1 id="三种迭代法的矩阵表示形式（-Ax-b-）"><a href="#三种迭代法的矩阵表示形式（-Ax-b-）" class="headerlink" title="三种迭代法的矩阵表示形式（$Ax= b$）"></a>三种迭代法的矩阵表示形式（$Ax= b$）</h1><h2 id="Jacobi迭代法"><a href="#Jacobi迭代法" class="headerlink" title="Jacobi迭代法"></a>Jacobi迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵， \\</script><script type="math/tex; mode=display">
+-L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b \\
+\Rightarrow Dx = (L+U)x+b \\</script><script type="math/tex; mode=display">
+\Rightarrow x = D^{-1}(L+U)x+D^{-1}b \\
+\Rightarrow x^{(k+1)} = D^{-1}(L+U)x^{k}+D^{-1}b</script><a id="more"></a>
+<ul>
+<li><strong>迭代矩阵：</strong>$B=D^{-1}(L+U)$</li>
+</ul>
+<h2 id="Gauss-Seidel迭代法"><a href="#Gauss-Seidel迭代法" class="headerlink" title="Gauss-Seidel迭代法"></a>Gauss-Seidel迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵，</script><script type="math/tex; mode=display">
+-L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b \\
+\Rightarrow Dx = Lx + Ux + b \\</script><script type="math/tex; mode=display">
+\Rightarrow Dx^{(k+1)} = Lx^{(k+1)}+Ux^k+b \\
+\Rightarrow (D-L)x^{(k+1)} = Ux^k+b \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = (D-L)^{-1}Ux^k+(D-L)^{-1}b</script><ul>
+<li><strong>迭代矩阵：</strong>$G=(D-L)^{-1}U$</li>
+</ul>
+<h2 id="SOR迭代法"><a href="#SOR迭代法" class="headerlink" title="SOR迭代法"></a>SOR迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵，</script><script type="math/tex; mode=display">
+L为缺少对角线元素的下三角矩阵，U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b\\</script><script type="math/tex; mode=display">
+\Rightarrow x = x +[b-(D-L-U)x] \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^{k} + D^{-1}[b-(D-L-U)x^{k}],J迭代格式 \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^k + D^{-1}[b+(U-D)x^k+Lx^{(k+1)}],G-S迭代格式 \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^k + \omega D^{-1}[b+(U-D)x^k+Lx^{(k+1)}] \\</script><script type="math/tex; mode=display">
+\Rightarrow Dx^{(k+1)} = Dx^k+[\omega b+ \omega(U-D)x^k+\omega Lx^{(k+1)}] \\</script><script type="math/tex; mode=display">
+\Rightarrow (D-\omega L)x^{(k+1)} = [D(1-\omega)+\omega U]x^k + \omega b \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = (D-\omega L)^{-1}[D(1-\omega)+\omega U]x^k + \omega(D-\omega L)^{-1}b</script><ul>
+<li><strong>迭代矩阵：</strong>$L_{\omega} = (D-\omega L)^{-1}[D(1-\omega)+\omega U]$</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第三章&gt;&gt;SOR迭代法</title>
+    <url>/2020/10/05/mathAnalysis-3-3/</url>
+    <content><![CDATA[<h1 id="SOR迭代法"><a href="#SOR迭代法" class="headerlink" title="SOR迭代法"></a>SOR迭代法</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><ul>
+<li>Jacobi迭代法的实质是用当前的迭代值加上一个修正量来得到一个新的迭代值，结合J迭代法和GS迭代法以及修正量的思想引入<strong>SOR迭代法</strong>。<a id="more"></a>
+</li>
+</ul>
+<h2 id="SOR迭代法的表达式"><a href="#SOR迭代法的表达式" class="headerlink" title="SOR迭代法的表达式"></a>SOR迭代法的表达式</h2><ul>
+<li><p>$x^{(k+1)}_i=x_i^{(k)}+\frac{\omega}{a_{ii}}(b_i - \sum^{i-1}_{j=1}a_{ij}x_j^{(k+1)}-\sum^n_{j=i}a_{ij}x_j^{(k)})$</p>
+<p>$i=1,2,\cdots,n,\quad k=0,1,\cdots$</p>
+</li>
+<li><p>$\omega$称作<strong>松弛因子</strong>，当$\omega &lt; 1$时，此迭代称为<strong>欠松弛迭代</strong>，$\omega&gt;1$时，称为<strong>超松弛迭代</strong>。</p>
+</li>
+</ul>
+<h2 id="SOR迭代法的判定定理"><a href="#SOR迭代法的判定定理" class="headerlink" title="SOR迭代法的判定定理"></a>SOR迭代法的判定定理</h2><ul>
+<li><strong>定理一</strong>：SOR方法收敛的<strong>充分必要条件</strong>是 $\rho(M_\omega)&lt;1$；收敛的<strong>充分</strong>条件为 $||M_\omega||&lt;1$。（$M_\omega$为迭代矩阵）</li>
+<li><strong>定理二</strong>：SOR方法收敛的<strong>必要条件</strong>是：$0&lt;\omega&lt;2$。</li>
+<li><strong>定理三</strong>：设系数矩阵$A$是对称正定的，且 $0&lt;\omega&lt;2$，则SOR方法收敛。</li>
+<li><strong>定理四</strong>：当系数矩阵$A$是$\alpha-$严格对角占优矩阵，且 $0&lt;w \le1$，SOR方法收敛。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第三章&gt;&gt;Jacobi迭代法和Gauss-Seidel迭代法</title>
+    <url>/2020/10/05/mathAnalysis-3-2/</url>
+    <content><![CDATA[<h1 id="Jacobi迭代法和Gauss-Seidel迭代法"><a href="#Jacobi迭代法和Gauss-Seidel迭代法" class="headerlink" title="Jacobi迭代法和Gauss-Seidel迭代法"></a>Jacobi迭代法和Gauss-Seidel迭代法</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><ul>
+<li>以该线性方程组为例，介绍几种线性方程组的数值解法</li>
+<li><script type="math/tex; mode=display">\left\{  \begin{array}{c}    a_{11}x_1+a_{12}x_2+a_{13}x_3=b_1 \\     a_{21}x_1+a_{22}x_2+a_{23}x_3=b_2 \\     a_{31}x_1+a_{32}x_2+a_{33}x_3=b_3 \end{array} \right.</script></li>
+</ul>
+<a id="more"></a>
+<h2 id="Jacobi迭代法"><a href="#Jacobi迭代法" class="headerlink" title="Jacobi迭代法"></a>Jacobi迭代法</h2><script type="math/tex; mode=display">
+\left\{
+\begin{array}{c}
+x_1^{(k+1)} = \frac{1}{a_{11}}(b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}) \\
+x_2^{(k+1)} = \frac{1}{a_{22}}(b_2-a_{21}x_1^{(k)}-a_{23}x_3^{(k)}) \\
+x_3^{(k+1)} = \frac{1}{a_{33}}(b_3-a_{31}x_1^{(k)}-a_{32}x_3^{(k)})
+\end{array}
+\right.</script><h2 id="Gauss-Seidel迭代法"><a href="#Gauss-Seidel迭代法" class="headerlink" title="Gauss-Seidel迭代法"></a>Gauss-Seidel迭代法</h2><ul>
+<li>由Jacobi迭代公式我们可知，在计算$x_2^{(k+1)}$时，此时$x_1^{(k+1)}$已经计算出；在计算$x_3^{(k+1)}$时，$x_1^{(k+1)},x_2^{(k+1)}$也已经计算出。为了充分利用这些数据便有了Gauss-Seidel迭代法：</li>
+</ul>
+<script type="math/tex; mode=display">
+\left\{
+\begin{array}{c}
+x_1^{(k+1)} = \frac{1}{a_{11}}(b_1-a_{12}x_2^{(k)}-a_{13}x_3^{(k)}) \\
+x_2^{(k+1)} = \frac{1}{a_{22}}(b_2-a_{21}x_1^{(k+1)}-a_{23}x_3^{(k)}) \\
+x_3^{(k+1)} = \frac{1}{a_{33}}(b_3-a_{31}x_1^{(k+1)}-a_{32}x_3^{(k+1)})
+\end{array}
+\right.</script>]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第三章&gt;&gt;迭代法的收敛性</title>
+    <url>/2020/10/05/mathAnalysis-3-1/</url>
+    <content><![CDATA[<h1 id="迭代法的收敛性"><a href="#迭代法的收敛性" class="headerlink" title="迭代法的收敛性"></a>迭代法的收敛性</h1><h2 id="迭代法的一般形式"><a href="#迭代法的一般形式" class="headerlink" title="迭代法的一般形式"></a>迭代法的一般形式</h2><h3 id="线性方程组的等价形式"><a href="#线性方程组的等价形式" class="headerlink" title="线性方程组的等价形式"></a>线性方程组的等价形式</h3><ul>
+<li>$Ax=b \Leftrightarrow x = Mx+g$<ul>
+<li>$M$成为迭代矩阵，$g$为某一向量<a id="more"></a>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="迭代法的一般形式-1"><a href="#迭代法的一般形式-1" class="headerlink" title="迭代法的一般形式"></a>迭代法的一般形式</h3><ul>
+<li>$x^{(k+1)}=Mx^{(k)}+g$</li>
+</ul>
+<h2 id="迭代法收敛的判定定理"><a href="#迭代法收敛的判定定理" class="headerlink" title="迭代法收敛的判定定理"></a>迭代法收敛的判定定理</h2><ul>
+<li><strong>定理一</strong>：对于任意初始向量$x^{(0)}$，迭代法收敛的<strong>充分必要条件</strong>是迭代矩阵$M$的谱半径 $\rho(M)&lt;1$。</li>
+<li><strong>定理二</strong>：对于任意初始向量$x^{(0)}$，迭代法收敛的<strong>充分条件</strong>是 $||M||&lt;1$。</li>
+<li><strong>补充：</strong>当迭代方法的迭代矩阵谱半径$\rho(M)&lt;1$时，谱半径越小，迭代方法的收敛速度越快。</li>
+</ul>
+<h2 id="Jacobi迭代法和Gauss-Seidel迭代法的收敛性"><a href="#Jacobi迭代法和Gauss-Seidel迭代法的收敛性" class="headerlink" title="Jacobi迭代法和Gauss-Seidel迭代法的收敛性"></a>Jacobi迭代法和Gauss-Seidel迭代法的收敛性</h2><h3 id="严格对角占优矩阵"><a href="#严格对角占优矩阵" class="headerlink" title="严格对角占优矩阵"></a>严格对角占优矩阵</h3><script type="math/tex; mode=display">
+设n阶A=(a_{ij})，如果A的元素满足:</script><script type="math/tex; mode=display">
+\sum^n_{j=1 \\ 
+j\neq i}|a_{ij}| < |a_{ii}|,\ i=1,2,\cdots,n \\
+则称A是严格对角占优矩阵</script><h3 id="判定定理"><a href="#判定定理" class="headerlink" title="判定定理"></a>判定定理</h3><ul>
+<li><p><strong>定理一</strong>：设$A$是严格对角占优矩阵，则解方程组$Ax=b$的$J$迭代法和$GS$迭代法均收敛。</p>
+</li>
+<li><p><strong>定理二</strong>：设$A$是对称正定矩阵，则解方程组$Ax=b$的$GS$迭代法是收敛的。</p>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第二章&gt;&gt;直接三角分解法</title>
+    <url>/2020/10/05/mathAnalysis-2-6/</url>
+    <content><![CDATA[<h1 id="线性方程组的固有性态"><a href="#线性方程组的固有性态" class="headerlink" title="线性方程组的固有性态"></a>线性方程组的固有性态</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><ul>
+<li>由于原始数据微小变化而导致解严重失真的方程组称为<strong>病态方程组</strong>，相应的系数矩阵称为<strong>病态矩阵</strong>。</li>
+<li>使用<strong>条件数</strong>来判定线性方程组是否<strong>病态</strong>。<a id="more"></a>
+</li>
+</ul>
+<h2 id="条件数"><a href="#条件数" class="headerlink" title="条件数"></a>条件数</h2><ul>
+<li>$Cond(A)=||A||\  ||A^{-1}||$</li>
+<li>经常使用的条件数: $Cond_p(A)=||A||_p \  ||A^{-1}||_p,\  p=1,2,\infty$</li>
+<li>当$A$为<strong>对称矩阵</strong>时, 可有</li>
+</ul>
+<script type="math/tex; mode=display">
+Cond_2(A)=\frac{|\lambda|_{max}}{|\lambda|_{min}}</script><ul>
+<li>通常用<strong>条件数过大</strong>来判定方程组是病态方程组</li>
+</ul>
+<h2 id="逆矩阵的求法"><a href="#逆矩阵的求法" class="headerlink" title="逆矩阵的求法"></a>逆矩阵的求法</h2><ul>
+<li>$(A,E) \Rightarrow 经过初等行变换得 (E, A^{-1})$</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第二章&gt;&gt;范数</title>
+    <url>/2020/10/05/mathAnalysis-2-5/</url>
+    <content><![CDATA[<h1 id="范数"><a href="#范数" class="headerlink" title="范数"></a>范数</h1><h2 id="引入"><a href="#引入" class="headerlink" title="引入"></a>引入</h2><ul>
+<li>为了对线性方程组的性态和其数值解进行分析，故引入范数来表示。<a id="more"></a>
+</li>
+</ul>
+<h2 id="向量范数"><a href="#向量范数" class="headerlink" title="向量范数"></a>向量范数</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>假设$||\cdot||$为向量空间$R^n$的实值函数，且满足以下三个条件：</li>
+<li><strong>非负性：</strong>对于任何向量$x\in R^n$，$||x||\ge 0$，且$||x||=0$当且仅当$x=0$</li>
+<li><strong>齐次性：</strong>对于任何实数$\alpha$和向量$x\in R^n$，$||\alpha x||=|\alpha|||x||$</li>
+<li><strong>三角不等式：</strong>对于任何向量$x,y\in R^n$，$||x+y||\le||x||+||y||$</li>
+</ul>
+<p>则称$||\cdot||$为向量空间$R^n$上的范数，$||x||$为向量$x$的范数</p>
+<h3 id="常用的三个向量范数"><a href="#常用的三个向量范数" class="headerlink" title="常用的三个向量范数"></a>常用的三个向量范数</h3><ul>
+<li>向量1-范数：$||x||_1=\sum^n_{i=1}|x_i|$</li>
+<li>向量2-范数：$||x||_2=(\sum^n_{i=1}x_i^2)^{\frac{1}{2}}$(向量的模)</li>
+<li>向量$\infty$-范数：$||x||_\infty=max_{1\le i\le n}|x_i|$</li>
+</ul>
+<h3 id="范数的等价性以及常用的等价公式"><a href="#范数的等价性以及常用的等价公式" class="headerlink" title="范数的等价性以及常用的等价公式"></a>范数的等价性以及常用的等价公式</h3><ul>
+<li><p><strong>范数的等价性：</strong>对于$R^n$空间上的任意两个范数$||\cdot||_\alpha$和$||\cdot||_\beta$，存在正常数$m,M$，使得：</p>
+<p>$m||x||_\beta \le ||x||_\alpha \le M||x||_\beta, \forall x \in R^n$</p>
+</li>
+<li><p><strong>常用的等价公式：</strong></p>
+<p>$||x||_\infty \le ||x||_1 \le n||x||_\infty$</p>
+<p>$||x||_\infty \le ||x||_2 \le \sqrt n||x||_\infty$</p>
+<p>$||x||_2 \le ||x||_1 \le \sqrt n||x||_2$</p>
+</li>
+</ul>
+<h2 id="矩阵范数"><a href="#矩阵范数" class="headerlink" title="矩阵范数"></a>矩阵范数</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>与向量范数定义类似，除去向量范数满足的三个条件以外，还要满足第四个条件：</li>
+<li>$||AB|| \le ||A||||B||$</li>
+<li>满足四个条件则称$||A||$为$A$的范数</li>
+</ul>
+<h3 id="四个常用的矩阵范数"><a href="#四个常用的矩阵范数" class="headerlink" title="四个常用的矩阵范数"></a>四个常用的矩阵范数</h3><ul>
+<li>矩阵的1-范数（列范数）：$||A||_1=max_{1\le j\le n}\sum_{i=1}^n|a_{ij}|$</li>
+<li>矩阵的2-范数（谱范数）：$||A||_2=(A^TA的最大特征值)^{\frac{1}{2}}$</li>
+<li>矩阵的$\infty$-范数（行范数）：$||A||_\infty=max_{1\le i \le n}\sum_{j=1}^n|a_{ij}|$</li>
+<li>矩阵的F-范数：$||A||_F=(\sum_{i,j=1}^n|a_{ij}|^2)^{\frac{1}{2}}$</li>
+</ul>
+<p>识记：1是竖着的所以一范数是列范数，$\infty$范数是横着的所以是行范数。</p>
+<h3 id="矩阵相容范数的判定"><a href="#矩阵相容范数的判定" class="headerlink" title="矩阵相容范数的判定"></a>矩阵相容范数的判定</h3><ul>
+<li>$||Ax||\le ||A||\  ||x||,\  \forall x \in R^n$</li>
+</ul>
+<h3 id="谱半径"><a href="#谱半径" class="headerlink" title="谱半径"></a>谱半径</h3><ul>
+<li>$\rho(A)=max_{1\le i \le n}|\lambda|$</li>
+</ul>
+<h3 id="特征值-lambda-的求法"><a href="#特征值-lambda-的求法" class="headerlink" title="特征值$\lambda$的求法"></a>特征值$\lambda$的求法</h3><ul>
+<li>计算行列式: $|\lambda E - A| = 0$</li>
+<li>特征值得和等于矩阵主对角线元素之和</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析&gt;&gt;第二章&gt;&gt;追赶法</title>
+    <url>/2020/10/05/mathAnalysis-2-4/</url>
+    <content><![CDATA[<h1 id="追赶法（Crout分解）"><a href="#追赶法（Crout分解）" class="headerlink" title="追赶法（Crout分解）"></a>追赶法（Crout分解）</h1><h2 id="使用范围"><a href="#使用范围" class="headerlink" title="使用范围"></a>使用范围</h2><ul>
+<li>追赶法是求三对角线性方程组的三角分解法。<a id="more"></a>
+</li>
+</ul>
+<h2 id="矩阵：-A-TM"><a href="#矩阵：-A-TM" class="headerlink" title="矩阵：$A=TM$"></a>矩阵：$A=TM$</h2><script type="math/tex; mode=display">
+A=\left[
+\begin{matrix}
+a_1 & c_1 \\
+d_2 & a_2    & c_2 \\
+    & \ddots & \ddots & \ddots \\
+    &        & d_{n-1}& a_{n-1} & c_{n-1} \\
+    &        &        & d_n     & a_n      \\
+\end{matrix}
+\right]</script><h2 id="三对角矩阵-A-的各阶顺序主子式不为零的充要条件"><a href="#三对角矩阵-A-的各阶顺序主子式不为零的充要条件" class="headerlink" title="三对角矩阵$A$的各阶顺序主子式不为零的充要条件"></a>三对角矩阵$A$的各阶顺序主子式不为零的充要条件</h2><ul>
+<li>$|a_1|&gt;|c_1|;|a_n|&gt;|d_n|;$</li>
+<li>$|a_i|\ge |c_i|+|d_i|,c_id_i\neq0,i=2,3,…n-1$</li>
+</ul>
+<h2 id="追赶法的具体步骤"><a href="#追赶法的具体步骤" class="headerlink" title="追赶法的具体步骤"></a>追赶法的具体步骤</h2><ul>
+<li>先求第一行，再求第二行，依次类推</li>
+<li>每一行都是从左到右开始求解</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数值分析&gt;&gt;第二章&gt;&gt;平方根法</title>
     <url>/2020/10/05/mathAnyalsis-2-3/</url>
     <content><![CDATA[<h1 id="平方根法（Cholesky分解）"><a href="#平方根法（Cholesky分解）" class="headerlink" title="平方根法（Cholesky分解）"></a>平方根法（Cholesky分解）</h1><h2 id="引入：对称正定矩阵"><a href="#引入：对称正定矩阵" class="headerlink" title="引入：对称正定矩阵"></a>引入：对称正定矩阵</h2><ul>

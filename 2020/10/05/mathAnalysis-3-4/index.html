@@ -22,20 +22,20 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="顺序Gauss消去法算法思路 将线性方程组的增广矩阵，只通过行变换，将增广矩阵化简成一个上三角矩阵。再从增广矩阵的最后一行开始依次回代，求出解向量。">
+  <meta name="description" content="三种迭代法的矩阵表示形式（$Ax&#x3D; b$）Jacobi迭代法 假设A&#x3D;D-L-U,D为对角矩阵， \\ -L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\ (D-L-U)x &#x3D; b \\ \Rightarrow Dx &#x3D; (L+U)x+b \\ \Rightarrow x &#x3D; D^{-1}(L+U)x+D^{-1}b \\ \Rightarrow x^{(k+1)} &#x3D; D^">
 <meta property="og:type" content="article">
-<meta property="og:title" content="数值分析&gt;&gt;第二章&gt;&gt;顺序Gauss消去法">
-<meta property="og:url" content="http://yoursite.com/2020/03/11/mathAnalysis-2-1/index.html">
+<meta property="og:title" content="数值分析&gt;&gt;第三章&gt;&gt;三种迭代法的矩阵表示形式">
+<meta property="og:url" content="http://yoursite.com/2020/10/05/mathAnalysis-3-4/index.html">
 <meta property="og:site_name" content="Dylan&#39;s Blog">
-<meta property="og:description" content="顺序Gauss消去法算法思路 将线性方程组的增广矩阵，只通过行变换，将增广矩阵化简成一个上三角矩阵。再从增广矩阵的最后一行开始依次回代，求出解向量。">
+<meta property="og:description" content="三种迭代法的矩阵表示形式（$Ax&#x3D; b$）Jacobi迭代法 假设A&#x3D;D-L-U,D为对角矩阵， \\ -L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\ (D-L-U)x &#x3D; b \\ \Rightarrow Dx &#x3D; (L+U)x+b \\ \Rightarrow x &#x3D; D^{-1}(L+U)x+D^{-1}b \\ \Rightarrow x^{(k+1)} &#x3D; D^">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-03-11T13:27:32.000Z">
-<meta property="article:modified_time" content="2020-03-11T13:46:29.953Z">
+<meta property="article:published_time" content="2020-10-05T13:14:58.000Z">
+<meta property="article:modified_time" content="2020-10-05T13:40:56.814Z">
 <meta property="article:author" content="Dylan">
 <meta property="article:tag" content="数学">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://yoursite.com/2020/03/11/mathAnalysis-2-1/">
+<link rel="canonical" href="http://yoursite.com/2020/10/05/mathAnalysis-3-4/">
 
 
 <script id="page-configurations">
@@ -47,7 +47,7 @@
   };
 </script>
 
-  <title>数值分析>>第二章>>顺序Gauss消去法 | Dylan's Blog</title>
+  <title>数值分析>>第三章>>三种迭代法的矩阵表示形式 | Dylan's Blog</title>
   
 
 
@@ -196,7 +196,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/11/mathAnalysis-2-1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/05/mathAnalysis-3-4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpeg">
@@ -209,7 +209,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          数值分析>>第二章>>顺序Gauss消去法
+          数值分析>>第三章>>三种迭代法的矩阵表示形式
         </h1>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-11 21:27:32 / 修改时间：21:46:29" itemprop="dateCreated datePublished" datetime="2020-03-11T21:27:32+08:00">2020-03-11</time>
+              <time title="创建时间：2020-10-05 21:14:58 / 修改时间：21:40:56" itemprop="dateCreated datePublished" datetime="2020-10-05T21:14:58+08:00">2020-10-05</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -237,7 +237,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-file-word-o"></i>
               </span>
-              <span>235</span>
+              <span>1k</span>
             </span>
 
         </div>
@@ -249,17 +249,38 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h1 id="顺序Gauss消去法"><a href="#顺序Gauss消去法" class="headerlink" title="顺序Gauss消去法"></a>顺序Gauss消去法</h1><h2 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h2><ul>
-<li>将线性方程组的增广矩阵，只通过行变换，将增广矩阵化简成一个上三角矩阵。再从增广矩阵的最后一行开始依次回代，求出解向量。<a id="more"></a>
-</li>
+        <h1 id="三种迭代法的矩阵表示形式（-Ax-b-）"><a href="#三种迭代法的矩阵表示形式（-Ax-b-）" class="headerlink" title="三种迭代法的矩阵表示形式（$Ax= b$）"></a>三种迭代法的矩阵表示形式（$Ax= b$）</h1><h2 id="Jacobi迭代法"><a href="#Jacobi迭代法" class="headerlink" title="Jacobi迭代法"></a>Jacobi迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵， \\</script><script type="math/tex; mode=display">
+-L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b \\
+\Rightarrow Dx = (L+U)x+b \\</script><script type="math/tex; mode=display">
+\Rightarrow x = D^{-1}(L+U)x+D^{-1}b \\
+\Rightarrow x^{(k+1)} = D^{-1}(L+U)x^{k}+D^{-1}b</script><a id="more"></a>
+<ul>
+<li><strong>迭代矩阵：</strong>$B=D^{-1}(L+U)$</li>
 </ul>
-<h2 id="算法成立的充要条件"><a href="#算法成立的充要条件" class="headerlink" title="算法成立的充要条件"></a>算法成立的充要条件</h2><ul>
-<li>主元素不为零$\Leftrightarrow$系数矩阵的各阶主子式都不为零</li>
-<li>主元素：顺序Gauss消去法中的$a_{kk}^{(k)},(k=1,2,…n)$。</li>
+<h2 id="Gauss-Seidel迭代法"><a href="#Gauss-Seidel迭代法" class="headerlink" title="Gauss-Seidel迭代法"></a>Gauss-Seidel迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵，</script><script type="math/tex; mode=display">
+-L为缺少对角线元素的下三角矩阵，-U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b \\
+\Rightarrow Dx = Lx + Ux + b \\</script><script type="math/tex; mode=display">
+\Rightarrow Dx^{(k+1)} = Lx^{(k+1)}+Ux^k+b \\
+\Rightarrow (D-L)x^{(k+1)} = Ux^k+b \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = (D-L)^{-1}Ux^k+(D-L)^{-1}b</script><ul>
+<li><strong>迭代矩阵：</strong>$G=(D-L)^{-1}U$</li>
 </ul>
-<h2 id="列主元Gauss消去法"><a href="#列主元Gauss消去法" class="headerlink" title="列主元Gauss消去法"></a>列主元Gauss消去法</h2><ul>
-<li>在顺序Gauss消去法的基础上，在每一步消元之前，在主元所在的列选取绝对值最大的元素作为主元素。</li>
-<li>充要条件：$|A|\neq0$ </li>
+<h2 id="SOR迭代法"><a href="#SOR迭代法" class="headerlink" title="SOR迭代法"></a>SOR迭代法</h2><script type="math/tex; mode=display">
+假设A=D-L-U,D为对角矩阵，</script><script type="math/tex; mode=display">
+L为缺少对角线元素的下三角矩阵，U为缺少对角线元素的上三角矩阵 \\</script><script type="math/tex; mode=display">
+(D-L-U)x = b\\</script><script type="math/tex; mode=display">
+\Rightarrow x = x +[b-(D-L-U)x] \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^{k} + D^{-1}[b-(D-L-U)x^{k}],J迭代格式 \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^k + D^{-1}[b+(U-D)x^k+Lx^{(k+1)}],G-S迭代格式 \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = x^k + \omega D^{-1}[b+(U-D)x^k+Lx^{(k+1)}] \\</script><script type="math/tex; mode=display">
+\Rightarrow Dx^{(k+1)} = Dx^k+[\omega b+ \omega(U-D)x^k+\omega Lx^{(k+1)}] \\</script><script type="math/tex; mode=display">
+\Rightarrow (D-\omega L)x^{(k+1)} = [D(1-\omega)+\omega U]x^k + \omega b \\</script><script type="math/tex; mode=display">
+\Rightarrow x^{(k+1)} = (D-\omega L)^{-1}[D(1-\omega)+\omega U]x^k + \omega(D-\omega L)^{-1}b</script><ul>
+<li><strong>迭代矩阵：</strong>$L_{\omega} = (D-\omega L)^{-1}[D(1-\omega)+\omega U]$</li>
 </ul>
 
     </div>
@@ -280,12 +301,12 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2020/03/11/mathAnalysis-1-1/" rel="prev" title="数值分析>>第一章>>误差分析">
-      <i class="fa fa-chevron-left"></i> 数值分析>>第一章>>误差分析
+    <a href="/2020/10/05/mathAnalysis-3-3/" rel="prev" title="数值分析>>第三章>>SOR迭代法">
+      <i class="fa fa-chevron-left"></i> 数值分析>>第三章>>SOR迭代法
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/10/05/mathAnalysis-2-2/" rel="next" title="数值分析>>第二章>>直接三角分解法">
-      数值分析>>第二章>>直接三角分解法 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/10/06/algorithmTemplate-1/" rel="next" title="基础算法常用模板">
+      基础算法常用模板 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -346,7 +367,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#顺序Gauss消去法"><span class="nav-number">1.</span> <span class="nav-text">顺序Gauss消去法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#算法思路"><span class="nav-number">1.1.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法成立的充要条件"><span class="nav-number">1.2.</span> <span class="nav-text">算法成立的充要条件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#列主元Gauss消去法"><span class="nav-number">1.3.</span> <span class="nav-text">列主元Gauss消去法</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#三种迭代法的矩阵表示形式（-Ax-b-）"><span class="nav-number">1.</span> <span class="nav-text">三种迭代法的矩阵表示形式（$Ax&#x3D; b$）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jacobi迭代法"><span class="nav-number">1.1.</span> <span class="nav-text">Jacobi迭代法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Gauss-Seidel迭代法"><span class="nav-number">1.2.</span> <span class="nav-text">Gauss-Seidel迭代法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SOR迭代法"><span class="nav-number">1.3.</span> <span class="nav-text">SOR迭代法</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
