@@ -3,20 +3,280 @@
   <entry>
     <title>基础算法常用模板</title>
     <url>/2020/10/06/algorithmTemplate-1/</url>
-    <content><![CDATA[<p>持续更新中~<br><a id="more"></a></p>
-<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">quickSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="comment">//终止</span></span><br><span class="line">    <span class="keyword">if</span>(left &gt;= right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//分治</span></span><br><span class="line">    <span class="keyword">int</span> i=left-<span class="number">1</span>, j=right+<span class="number">1</span>, x=arr[(left+right)&gt;&gt;<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        <span class="keyword">do</span> i++; <span class="keyword">while</span>(arr[i] &lt; x);</span><br><span class="line">        <span class="keyword">do</span> j--; <span class="keyword">while</span>(arr[j] &gt; x);</span><br><span class="line">        <span class="comment">//交换</span></span><br><span class="line">        <span class="keyword">if</span>(i&lt;j)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp = arr[i];</span><br><span class="line">            arr[i] = arr[j];</span><br><span class="line">            arr[j] = arr[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//递归</span></span><br><span class="line">    quickSort(arr, left, j);</span><br><span class="line">    quickSort(arr, j+<span class="number">1</span>, right);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">mergeSort</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> left, <span class="keyword">int</span> right)</span></span>&#123;</span><br><span class="line">    <span class="comment">//终止</span></span><br><span class="line">    <span class="keyword">if</span>(left == right)</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    <span class="comment">//递归</span></span><br><span class="line">    <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    mergeSort(arr, left, mid);</span><br><span class="line">    mergeSort(arr, mid+<span class="number">1</span>, right);</span><br><span class="line">    <span class="comment">//分治</span></span><br><span class="line">    <span class="keyword">int</span> i=left, j=mid+<span class="number">1</span>, k=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid &amp;&amp; j&lt;=right)&#123;</span><br><span class="line">        <span class="comment">//temp数组用于临时存放left到right的有序数列</span></span><br><span class="line">        <span class="keyword">if</span>(arr[i] &lt;= arr[j]) temp[k++] = arr[i++]; </span><br><span class="line">        <span class="keyword">else</span> temp[k++] = arr[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//将剩余的数依次放到temp数组</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;=mid) temp[k++] = arr[i++];</span><br><span class="line">    <span class="keyword">while</span>(j&lt;=right) temp[k++] = arr[j++];</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//归位</span></span><br><span class="line">    <span class="keyword">for</span>(i=left, j=<span class="number">0</span>; i &lt;= right; i++, j++) arr[i] = temp[j];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> min = arr[i]; <span class="comment">//找出第i小的元素，并放到数组的下标i中</span></span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i; j&lt;n; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(arr[j]&lt;min)&#123;</span><br><span class="line">                min = arr[j];</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//换位</span></span><br><span class="line">       	<span class="keyword">int</span> temp = arr[i];</span><br><span class="line">        arr[i] = min;</span><br><span class="line">        arr[minIndex] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = arr.length;</span><br><span class="line">    <span class="keyword">int</span> i,j;</span><br><span class="line">    <span class="keyword">for</span>(i=<span class="number">1</span>; i&lt;n; i++)&#123;</span><br><span class="line">        <span class="keyword">int</span> temp = arr[i]; <span class="comment">//将元素i插入到有序数列0,1,2...i-1中</span></span><br><span class="line">        <span class="keyword">for</span>(j=i-<span class="number">1</span>; j &gt;= <span class="number">0</span> &amp;&amp; temp &lt; arr[j]; j--)&#123;</span><br><span class="line">            arr[j+<span class="number">1</span>] = arr[j];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//换位</span></span><br><span class="line">        arr[j+<span class="number">1</span>] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="二分查找-两种情况"><a href="#二分查找-两种情况" class="headerlink" title="二分查找(两种情况)"></a>二分查找(两种情况)</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bSearch_1</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//初值,n为arr的长度</span></span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + right &gt;&gt; <span class="number">1</span>; <span class="comment">//两者的区别</span></span><br><span class="line">        <span class="comment">//check()为判断边界条件是否满足，满足返回true</span></span><br><span class="line">        <span class="keyword">if</span>(check()) right = mid; <span class="comment">//满足区间在左半边</span></span><br><span class="line">        <span class="keyword">else</span> left = mid + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">bSearch_2</span><span class="params">(<span class="keyword">int</span>[] arr, <span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="comment">//初值,n为arr的长度</span></span><br><span class="line">    <span class="keyword">int</span> left = <span class="number">0</span>, right = n-<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span>(left &lt; right)&#123;</span><br><span class="line">        <span class="keyword">int</span> mid = left + right + <span class="number">1</span> &gt;&gt; <span class="number">1</span>; <span class="comment">//两者的区别</span></span><br><span class="line">        <span class="comment">//check()为判断边界条件是否满足，满足返回true</span></span><br><span class="line">        <span class="keyword">if</span>(check()) left = mid; <span class="comment">//满足区间在右半边</span></span><br><span class="line">        <span class="keyword">else</span> right = mid - <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意：浮点数二分可以用于开n次方，也不用判断边界条件</span></span><br></pre></td></tr></table></figure>
-<h2 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">add</span><span class="params">(List&lt;Integer&gt; A, List&lt;Integer&gt; B)</span></span>&#123;</span><br><span class="line">    <span class="comment">//C = A + B 数字均为逆序存储，例：12345被存储为54321</span></span><br><span class="line">    List&lt;Integer&gt; C = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    <span class="comment">//假设A&gt;B</span></span><br><span class="line">    <span class="keyword">if</span>(A.size() &lt; B.size())</span><br><span class="line">        <span class="keyword">return</span> add(B, A);</span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size(); i++)&#123;</span><br><span class="line">        t += A.get(i);</span><br><span class="line">        <span class="keyword">if</span>(i &lt; B.size()) t += B.get(i);</span><br><span class="line">        <span class="comment">//第i位的结果就是t%10的余数</span></span><br><span class="line">        C.add(t % <span class="number">10</span>);</span><br><span class="line">        <span class="comment">//计算进位</span></span><br><span class="line">        t /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//最后一次加法如果还有进位就把t加到结果中</span></span><br><span class="line">    <span class="keyword">if</span>(t != <span class="number">0</span>) C.add(t);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">sub</span><span class="params">(List&lt;Integer&gt; A, List&lt;Integer&gt; B)</span></span>&#123;</span><br><span class="line">  	<span class="comment">//假设A&gt;B,C = A - B</span></span><br><span class="line">    List&lt;Integer&gt; C = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> t = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size(); i++)&#123;</span><br><span class="line">        t = A.get(i) - t;</span><br><span class="line">        <span class="keyword">if</span>(i &lt; B.size()) t -= B.get(i);</span><br><span class="line">        <span class="comment">//第i位的结果有两种情况，一种是需要借位，一种是不需要</span></span><br><span class="line">        C.add((t+<span class="number">10</span>)%<span class="number">10</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//计算借位</span></span><br><span class="line">        <span class="keyword">if</span>(t &lt; <span class="number">0</span>) t = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span> t = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//结果可能为000123的情况，所以要去掉前导零</span></span><br><span class="line">    <span class="keyword">while</span>(C.size() &gt; <span class="number">1</span> &amp;&amp; C.get(C.size()-<span class="number">1</span>) == <span class="number">0</span>) C.remove(C.get(C.size()-<span class="number">1</span>));</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="高精度乘低精度"><a href="#高精度乘低精度" class="headerlink" title="高精度乘低精度"></a>高精度乘低精度</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">mul</span><span class="params">(List&lt;Integer&gt; A, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="comment">//A为高精度，b为低精度，C = Axb</span></span><br><span class="line">    List&lt;Integer&gt; C = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> t=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>; i&lt;A.size(); i++)&#123;</span><br><span class="line">        t += A.get(i)*b;</span><br><span class="line">        <span class="comment">//第i位的结果t % 10</span></span><br><span class="line">        C.add(t % <span class="number">10</span>);</span><br><span class="line">        <span class="comment">//计算进位</span></span><br><span class="line">        t /= <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//判断最后一次计算是否有进位</span></span><br><span class="line">    <span class="keyword">if</span>(t != <span class="number">0</span>) C.add(t);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//如果b为0，计算结果可能为00000，故需要去掉前导零</span></span><br><span class="line">    <span class="keyword">while</span>(C.size() &gt; <span class="number">1</span> &amp;&amp; C.get(C.size()-<span class="number">1</span>) == <span class="number">0</span>) C.remove(C.size()-<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="高精度除低精度"><a href="#高精度除低精度" class="headerlink" title="高精度除低精度"></a>高精度除低精度</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> r; <span class="comment">//余数</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> List&lt;Integer&gt; <span class="title">div</span><span class="params">(List&lt;Integer&gt; A, <span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="comment">//C = A / b</span></span><br><span class="line">    List&lt;Integer&gt; C = <span class="keyword">new</span> ArrayList&lt;Integer&gt;();</span><br><span class="line">    </span><br><span class="line">    r=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=A.size()-<span class="number">1</span>; i&gt;=<span class="number">0</span>; i--)&#123;</span><br><span class="line">        r = r*<span class="number">10</span>+A.get(i);</span><br><span class="line">       	<span class="comment">//第i位结果</span></span><br><span class="line">        C.add(r/b);</span><br><span class="line">        r %= b;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//逆序存储</span></span><br><span class="line">    Collections.reverse(C);</span><br><span class="line">    <span class="comment">//结果可能为011，去除前导零</span></span><br><span class="line">    <span class="keyword">while</span>(C.size() &gt; <span class="number">1</span> &amp;&amp; C.get(C.size()-<span class="number">1</span>) == <span class="number">0</span>) C.remove(C.size()-<span class="number">1</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> C;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="一维前缀和"><a href="#一维前缀和" class="headerlink" title="一维前缀和"></a>一维前缀和</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">S[i] = a[<span class="number">1</span>]+a[<span class="number">2</span>]+...+a[i];</span><br><span class="line">a[l]~a[r]的和=S[r] - S[l-<span class="number">1</span>]; <span class="comment">//a[0] = 0; S[0] = 0</span></span><br></pre></td></tr></table></figure>
-<h2 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">S[i][j]为第i行j列左上部分所有元素的和</span><br><span class="line">求左上角坐标为x1,y1,右下角坐标为x2,y2的子矩阵的和：</span><br><span class="line">A = S[x2][y2] - S[x1-<span class="number">1</span>][y2] - S[x2][y1-<span class="number">1</span>] + S[x1-<span class="number">1</span>][y1-<span class="number">1</span>];</span><br></pre></td></tr></table></figure>
-<h2 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">已知a[], b[],b[]为a[]的差分数组，即a[i] = b[<span class="number">0</span>]+b[<span class="number">1</span>]+...+b[i];</span><br><span class="line">给下标区间为[l,r]的a[]都加上常数c &lt;=&gt; b[l] += c, b[r+<span class="number">1</span>] -= c;</span><br></pre></td></tr></table></figure>
-<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">给左上角坐标为x1,y1,右下角坐标为x2,y2的子矩阵的每一个元素加上c(先构造差分矩阵再插入)</span><br><span class="line">&lt;=&gt; </span><br><span class="line">b[x1][y1] += c,</span><br><span class="line">b[x1][y2+<span class="number">1</span>] -= c,</span><br><span class="line">b[x2+<span class="number">1</span>][y1] -= c,</span><br><span class="line">b[x2+<span class="number">1</span>][y2+<span class="number">1</span>] += c;</span><br></pre></td></tr></table></figure>]]></content>
+    <content><![CDATA[<ul>
+<li>常用排序、二分、高精度、前缀和、差分、位运算、双指针、离散化、区间合并<a id="more"></a>
+</li>
+</ul>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><pre><code class="lang-java">public void quickSort(int[] arr, int left, int right){
+    //终止
+    if(left &gt;= right)
+        return;
+    //分治
+    int i=left-1, j=right+1, x=arr[(left+right)&gt;&gt;1];
+    while(i&lt;j){
+        do i++; while(arr[i] &lt; x);
+        do j--; while(arr[j] &gt; x);
+        //交换
+        if(i&lt;j){
+            int temp = arr[i];
+            arr[i] = arr[j];
+            arr[j] = arr[i];
+        }
+    }
+    //递归
+    quickSort(arr, left, j);
+    quickSort(arr, j+1, right);
+}
+</code></pre>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><pre><code class="lang-java">public void mergeSort(int[] arr, int left, int right){
+    //终止
+    if(left == right)
+        return;
+    //递归
+    int mid = left + right &gt;&gt; 1;
+    mergeSort(arr, left, mid);
+    mergeSort(arr, mid+1, right);
+    //分治
+    int i=left, j=mid+1, k=0;
+    while(i&lt;=mid &amp;&amp; j&lt;=right){
+        //temp数组用于临时存放left到right的有序数列
+        if(arr[i] &lt;= arr[j]) temp[k++] = arr[i++]; 
+        else temp[k++] = arr[j++];
+    }
+    //将剩余的数依次放到temp数组
+    while(i&lt;=mid) temp[k++] = arr[i++];
+    while(j&lt;=right) temp[k++] = arr[j++];
+
+    //归位
+    for(i=left, j=0; i &lt;= right; i++, j++) arr[i] = temp[j];
+}
+</code></pre>
+<h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><pre><code class="lang-java">public void bubbleSort(int[] arr){
+    int n = arr.length;
+    for(int i=0; i&lt;n; i++){
+        int min = arr[i]; //找出第i小的元素，并放到数组的下标i中
+        int minIndex = i;
+        for(int j=i; j&lt;n; j++){
+            if(arr[j]&lt;min){
+                min = arr[j];
+                minIndex = j;
+            }
+        }
+        //换位
+           int temp = arr[i];
+        arr[i] = min;
+        arr[minIndex] = temp;
+    }
+}
+</code></pre>
+<h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><pre><code class="lang-java">public void insertSort(int[] arr){
+    int n = arr.length;
+    int i,j;
+    for(i=1; i&lt;n; i++){
+        int temp = arr[i]; //将元素i插入到有序数列0,1,2...i-1中
+        for(j=i-1; j &gt;= 0 &amp;&amp; temp &lt; arr[j]; j--){
+            arr[j+1] = arr[j];
+        }
+        //换位
+        arr[j+1] = temp;
+    }
+}
+</code></pre>
+<h2 id="二分查找-两种情况"><a href="#二分查找-两种情况" class="headerlink" title="二分查找(两种情况)"></a>二分查找(两种情况)</h2><pre><code class="lang-java">public void bSearch_1(int[] arr, int n){
+    //初值,n为arr的长度
+    int left = 0, right = n-1;
+    while(left &lt; right){
+        int mid = left + right &gt;&gt; 1; //两者的区别
+        //check()为判断边界条件是否满足，满足返回true
+        if(check()) right = mid; //满足区间在左半边
+        else left = mid + 1;
+    }
+}
+
+public void bSearch_2(int[] arr, int n){
+    //初值,n为arr的长度
+    int left = 0, right = n-1;
+    while(left &lt; right){
+        int mid = left + right + 1 &gt;&gt; 1; //两者的区别
+        //check()为判断边界条件是否满足，满足返回true
+        if(check()) left = mid; //满足区间在右半边
+        else right = mid - 1;
+    }
+}
+
+//注意：浮点数二分可以用于开n次方，也不用判断边界条件
+</code></pre>
+<h2 id="高精度加法"><a href="#高精度加法" class="headerlink" title="高精度加法"></a>高精度加法</h2><pre><code class="lang-java">public List&lt;Integer&gt; add(List&lt;Integer&gt; A, List&lt;Integer&gt; B){
+    //C = A + B 数字均为逆序存储，例：12345被存储为54321
+    List&lt;Integer&gt; C = new ArrayList&lt;Integer&gt;();
+    //假设A&gt;B
+    if(A.size() &lt; B.size())
+        return add(B, A);
+    int t = 0;
+    for(int i=0; i&lt;A.size(); i++){
+        t += A.get(i);
+        if(i &lt; B.size()) t += B.get(i);
+        //第i位的结果就是t%10的余数
+        C.add(t % 10);
+        //计算进位
+        t /= 10;
+    }
+
+    //最后一次加法如果还有进位就把t加到结果中
+    if(t != 0) C.add(t);
+
+    return C;
+}
+</code></pre>
+<h2 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h2><pre><code class="lang-java">public List&lt;Integer&gt; sub(List&lt;Integer&gt; A, List&lt;Integer&gt; B){
+      //假设A&gt;B,C = A - B
+    List&lt;Integer&gt; C = new ArrayList&lt;Integer&gt;();
+
+    int t = 0;
+    for(int i=0; i&lt;A.size(); i++){
+        t = A.get(i) - t;
+        if(i &lt; B.size()) t -= B.get(i);
+        //第i位的结果有两种情况，一种是需要借位，一种是不需要
+        C.add((t+10)%10);
+
+        //计算借位
+        if(t &lt; 0) t = 1;
+        else t = 0;
+    }
+
+    //结果可能为000123的情况，所以要去掉前导零
+    while(C.size() &gt; 1 &amp;&amp; C.get(C.size()-1) == 0) C.remove(C.get(C.size()-1));
+
+    return C;
+}
+</code></pre>
+<h2 id="高精度乘低精度"><a href="#高精度乘低精度" class="headerlink" title="高精度乘低精度"></a>高精度乘低精度</h2><pre><code class="lang-java">public List&lt;Integer&gt; mul(List&lt;Integer&gt; A, int b){
+    //A为高精度，b为低精度，C = Axb
+    List&lt;Integer&gt; C = new ArrayList&lt;Integer&gt;();
+
+    int t=0;
+    for(int i=0; i&lt;A.size(); i++){
+        t += A.get(i)*b;
+        //第i位的结果t % 10
+        C.add(t % 10);
+        //计算进位
+        t /= 10;
+    }
+
+    //判断最后一次计算是否有进位
+    if(t != 0) C.add(t);
+
+    //如果b为0，计算结果可能为00000，故需要去掉前导零
+    while(C.size() &gt; 1 &amp;&amp; C.get(C.size()-1) == 0) C.remove(C.size()-1);
+
+    return C;
+}
+</code></pre>
+<h2 id="高精度除低精度"><a href="#高精度除低精度" class="headerlink" title="高精度除低精度"></a>高精度除低精度</h2><pre><code class="lang-java">int r; //余数
+public List&lt;Integer&gt; div(List&lt;Integer&gt; A, int b){
+    //C = A / b
+    List&lt;Integer&gt; C = new ArrayList&lt;Integer&gt;();
+
+    r=0;
+    for(int i=A.size()-1; i&gt;=0; i--){
+        r = r*10+A.get(i);
+           //第i位结果
+        C.add(r/b);
+        r %= b;
+    }
+    //逆序存储
+    Collections.reverse(C);
+    //结果可能为011，去除前导零
+    while(C.size() &gt; 1 &amp;&amp; C.get(C.size()-1) == 0) C.remove(C.size()-1);
+
+    return C;
+}
+</code></pre>
+<h2 id="一维前缀和"><a href="#一维前缀和" class="headerlink" title="一维前缀和"></a>一维前缀和</h2><pre><code class="lang-java">S[i] = a[1]+a[2]+...+a[i];
+a[l]~a[r]的和=S[r] - S[l-1]; //a[0] = 0; S[0] = 0
+</code></pre>
+<h2 id="二维前缀和"><a href="#二维前缀和" class="headerlink" title="二维前缀和"></a>二维前缀和</h2><pre><code class="lang-java">S[i][j]为第i行j列左上部分所有元素的和
+求左上角坐标为x1,y1,右下角坐标为x2,y2的子矩阵的和：
+A = S[x2][y2] - S[x1-1][y2] - S[x2][y1-1] + S[x1-1][y1-1];
+</code></pre>
+<h2 id="一维差分"><a href="#一维差分" class="headerlink" title="一维差分"></a>一维差分</h2><pre><code class="lang-java">已知a[], b[],b[]为a[]的差分数组，即a[i] = b[0]+b[1]+...+b[i];
+给下标区间为[l,r]的a[]都加上常数c &lt;=&gt; b[l] += c, b[r+1] -= c;
+</code></pre>
+<h2 id="二维差分"><a href="#二维差分" class="headerlink" title="二维差分"></a>二维差分</h2><pre><code class="lang-java">给左上角坐标为x1,y1,右下角坐标为x2,y2的子矩阵的每一个元素加上c(先构造差分矩阵再插入)
+&lt;=&gt; 
+b[x1][y1] += c,
+b[x1][y2+1] -= c,
+b[x2+1][y1] -= c,
+b[x2+1][y2+1] += c;
+</code></pre>
+<h2 id="位运算"><a href="#位运算" class="headerlink" title="位运算"></a>位运算</h2><pre><code class="lang-java">//求n的第k位数字（n为二进制表示形式）
+n &gt;&gt; k &amp; 1;
+//返回n的最后一位1（n为二进制表示形式）
+lowbit(n) return n &amp; -n;
+</code></pre>
+<h2 id="双指针"><a href="#双指针" class="headerlink" title="双指针"></a>双指针</h2><pre><code class="lang-java">for(int i=0; i&lt;n; i++){
+    // check(i, j) 表示根据题意设定的维护双指针的条件
+    while(check(i, j)) j++;
+    // 根据题意具体的逻辑
+}
+</code></pre>
+<ul>
+<li>常见的问题有两类：<ul>
+<li>对于一个序列，用两个指针维护一段区间</li>
+<li>对于两个序列，维护某种次序，比如归并排序中合并两个子序列</li>
+</ul>
+</li>
+</ul>
+<h2 id="离散化"><a href="#离散化" class="headerlink" title="离散化"></a>离散化</h2><pre><code class="lang-java">Set&lt;Integer&gt; alls; //存储所有待离散化的值（已去重）
+List&lt;Integer&gt; allList = new ArrayList&lt;Integer&gt;();
+allList.addAll(alls);
+//排序
+Collections.sort(allList, (a1, a2) -&gt; {
+    return (Integer)a1 - (Integer)a2;
+});
+//如果要使用前缀和，返回值+1
+public int find(int x){
+    int left=0, right=allList.size()-1;
+    while(left &lt; right){
+        int mid = left + right &gt;&gt; 1;
+        if(allList.get(mid) &gt;= x) right = mid;
+        else left = mid + 1;
+    }
+
+    return left+1; //映射到1,2,...,n
+}
+</code></pre>
+<h2 id="区间合并"><a href="#区间合并" class="headerlink" title="区间合并"></a>区间合并</h2><pre><code class="lang-java">//首先将区间序列按照左端点排好序
+class Pair{
+    int first;
+    int second;
+    public Pair(int a, int b){
+        this.first = a;
+        this.second = b;
+    }
+}
+
+//假设list已经排好序,list.size() &gt;= 2
+public List&lt;Pair&gt; merge(List&lt;Pair&gt; list){
+    List&lt;Pair&gt; res = new ArrayList&lt;Pair&gt;();
+    //先将第一个区间加到res中
+    res.add(list.get(0));
+    for(int i=1; i &lt; list.size(); i++){
+        //判断两个区间是否有交集
+        if(res.get(res.size()-1).second &lt; list.get(i).first){
+            //没有，直接加
+            res.add(list.get(i));
+        }else{
+            //有，判断区间左端点是谁
+            int second = res.get(res.size()-1).second;
+            int nSecond = list.get(i).second;
+            res.get(res.size()-1).second = (second &gt; nSecond) ? second : nSecond;
+        }
+    }
+    return res;
+}
+</code></pre>
+]]></content>
       <categories>
         <category>算法模板</category>
       </categories>
@@ -26,6 +286,10 @@
         <tag>二分查找</tag>
         <tag>高精度</tag>
         <tag>前缀和与差分</tag>
+        <tag>位运算</tag>
+        <tag>双指针</tag>
+        <tag>离散化</tag>
+        <tag>区间合并</tag>
       </tags>
   </entry>
   <entry>
