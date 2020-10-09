@@ -1,6 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>数值分析||第五章||最小二乘法</title>
+    <url>/2020/10/09/mathAnalysis-5-4/</url>
+    <content><![CDATA[<h1 id="最小二乘法-多项式拟合曲线"><a href="#最小二乘法-多项式拟合曲线" class="headerlink" title="最小二乘法(多项式拟合曲线)"></a>最小二乘法(多项式拟合曲线)</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>在函数类$\Phi=span [\phi_0(x),\phi_1(x),\cdots,\phi_n(x)]$中找到一个函数,使得拟合函数和原函数的误差向量的二范数达到最小.</p>
+<h2 id="多项式拟合函数-1-x-x-2-cdots-x-n"><a href="#多项式拟合函数-1-x-x-2-cdots-x-n" class="headerlink" title="多项式拟合函数($1,x,x^2,\cdots,x^n$)"></a>多项式拟合函数($1,x,x^2,\cdots,x^n$)</h2><script type="math/tex; mode=display">
+\phi(x)=a_0\phi_0(x)+a_1\phi_1(x)+\cdots+a_n\phi_n(x)</script><p>只需要求出系数$a_0,a_1,\cdots,a_n$即可求出拟合曲线</p>
+<h2 id="正则方程组"><a href="#正则方程组" class="headerlink" title="正则方程组"></a>正则方程组</h2><p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201009/image-20200611221402561.png" alt="image-20200611221402561"></p>
+<p>$(\phi_0,\phi_1)=\rho\phi_0\phi_1$</p>
+<h2 id="构造最小二乘法的一些思路"><a href="#构造最小二乘法的一些思路" class="headerlink" title="构造最小二乘法的一些思路"></a>构造最小二乘法的一些思路</h2><ul>
+<li>如果离散节点构成的函数图像不是多项式函数,而是指数函数,可以采用取对数的方式来化成多项式函数求值!</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析||第五章||牛顿插值多项式</title>
+    <url>/2020/10/09/mathAnalysis-5-3/</url>
+    <content><![CDATA[<h1 id="牛顿插值多项式"><a href="#牛顿插值多项式" class="headerlink" title="牛顿插值多项式"></a>牛顿插值多项式</h1><h2 id="差商"><a href="#差商" class="headerlink" title="差商"></a>差商</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><ul>
+<li>一阶差商：$f[x_i,x_j]=\frac{f(x_j)-f(x_i)}{x_j-x_i}$</li>
+<li>二阶差商：$f[x_i,x_j,x_k]=\frac{f[x_j,x_k]-f[x_i,x_j]}{x_k-x_i}$</li>
+<li>k阶差商以此类推</li>
+</ul>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ol>
+<li>$f[x_0,x_1,\cdots,x_k]=\sum_{j=0}^k\frac{1}{\omega’_{k+1}(x_j)}f(x_j)$</li>
+<li>差商对节点具有对称性</li>
+<li>n次多项式$f(x)$的k阶差商$f[x_0,x_1,\cdots,x_{k-1},x]$,当$k\le n$时，是一个关于x的n-k次多项式，当$k&gt;n$时，恒等于0.</li>
+<li>若$f(x)$具有k阶连续导数，则：$f[x_0,x_1,\cdots,x_k]=\frac{f^{(k)}(\xi)}{k!}$</li>
+</ol>
+<h2 id="牛顿插值多项式-1"><a href="#牛顿插值多项式-1" class="headerlink" title="牛顿插值多项式"></a>牛顿插值多项式</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><p>$N_n(x)=f(x_0)+f[x_0,x_1]\omega_1(x)+f[x_0,x_1,x_2]\omega_2(x)+\cdots+f[x_0,x_1,\cdots,x_n]\omega_n(x)$</p>
+<h3 id="余项"><a href="#余项" class="headerlink" title="余项"></a>余项</h3><p>$R_n(x)=f[x,x_0,x_1,\cdots,x_n]\omega_{n+1}(x)=\frac{f^{(n+1)}(\zeta)}{(n+1)!}\omega_{n+1}(x)$</p>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析||第五章||分段插值多项式</title>
+    <url>/2020/10/09/mathAnalysis-5-2/</url>
+    <content><![CDATA[<h1 id="分段插值多项式"><a href="#分段插值多项式" class="headerlink" title="分段插值多项式"></a>分段插值多项式</h1><h2 id="Runge现象"><a href="#Runge现象" class="headerlink" title="Runge现象"></a>Runge现象</h2><ul>
+<li>高次的插值函数的近似效果越差,以致完全失真,这个现象称为Runge现象.(高次插值数值不稳定)</li>
+</ul>
+<h2 id="分段线性插值"><a href="#分段线性插值" class="headerlink" title="分段线性插值"></a>分段线性插值</h2><h3 id="格式"><a href="#格式" class="headerlink" title="格式"></a>格式</h3><script type="math/tex; mode=display">
+S_1(x)=\frac{x_i-x}{h_i}y_{i-1}+\frac{x-x_{i-1}}{h_i}y_i, x \in [x_{i-1},x_i]</script><h3 id="插值余项"><a href="#插值余项" class="headerlink" title="插值余项"></a>插值余项</h3><script type="math/tex; mode=display">
+f(x)-S_1(x)=\frac{f''(\xi)}{2!}(x-x_{i-1})(x-x_i)\le\frac{M_2}{8}h^2</script><h2 id="分段二次插值"><a href="#分段二次插值" class="headerlink" title="分段二次插值"></a>分段二次插值</h2><h3 id="插值余项-1"><a href="#插值余项-1" class="headerlink" title="插值余项"></a>插值余项</h3><script type="math/tex; mode=display">
+f(x)-S_2(x)=\frac{f'''(\xi)}{3!}(x-x_{i-1})(x-x_{i-\frac{1}{2}})(x-x_i)\le \frac{M_3}{72\sqrt3}h^3</script><h2 id="分段Hermite插值"><a href="#分段Hermite插值" class="headerlink" title="分段Hermite插值"></a>分段Hermite插值</h2><h3 id="插值余项-2"><a href="#插值余项-2" class="headerlink" title="插值余项"></a>插值余项</h3><script type="math/tex; mode=display">
+f(x)-H_3(x)=\frac{f^{(4)}(\xi)}{4!}(x-x_{i-1})^2(x-x_i)^2\le \frac{M_4}{384}h^2(h^4?)</script>]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>数值分析||第五章||插值的定义</title>
+    <url>/2020/10/09/mathAnalysis-5-1/</url>
+    <content><![CDATA[<h1 id="插值的定义"><a href="#插值的定义" class="headerlink" title="插值的定义"></a>插值的定义</h1><h2 id="插值条件"><a href="#插值条件" class="headerlink" title="插值条件"></a>插值条件</h2><ul>
+<li><p>设函数$f(x)$在区间$[a,b]$上连续，给定$n+1$个节点，$a\le x_0&lt;x_1…&lt;x_n\le b$。</p>
+</li>
+<li><p>已知$f(x_k)=y_k(k=0,1,…n)$,在函数类P中寻找一函数$\phi(x)$作为$f(x)$的近似表达式，使满足：</p>
+<p>$\phi(x_k)=f(x_k)=y_k,k=0,1,…,n$</p>
+<p>注：$\phi(x)$为插值函数，函数类P为多项式函数类</p>
+</li>
+</ul>
+<h2 id="插值定理"><a href="#插值定理" class="headerlink" title="插值定理"></a>插值定理</h2><ul>
+<li>如果$n+1$个节点互不相等，则存在唯一的一个插值函数$p_n(x)$。</li>
+</ul>
+]]></content>
+      <categories>
+        <category>数值分析笔记</category>
+      </categories>
+      <tags>
+        <tag>数学</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>数值分析||第四章||牛顿迭代法</title>
     <url>/2020/10/09/mathAnalysis-4-3/</url>
     <content><![CDATA[<h1 id="牛顿迭代法"><a href="#牛顿迭代法" class="headerlink" title="牛顿迭代法"></a>牛顿迭代法</h1><h2 id="Newton-迭代格式"><a href="#Newton-迭代格式" class="headerlink" title="Newton 迭代格式"></a>Newton 迭代格式</h2><ul>
@@ -42,10 +125,10 @@
 </li>
 <li><p><strong>步骤：</strong></p>
 <script type="math/tex; mode=display">
-①记a_0=a,\ b=b_0,\ 计算\ x_1=\frac{a+b}{2} \\
-②若f(a_0)f(x_1)<0,\ 取\ a_1=a_0,\ b_1=x_1; \\
-③若f(a_0)f(x_1)>0,\ 取\ a_1=x_1,\ b_1=b_0; \\
-④则得到新的有根区间\ [a_1,b_1],\ 其区间长度恰好是\ [a_0,b_0]\ 长度的一半; \\
+①记a_0=a,\ b=b_0,\ 计算\ x_1=\frac{a+b}{2} \\</script><script type="math/tex; mode=display">
+②若f(a_0)f(x_1)<0,\ 取\ a_1=a_0,\ b_1=x_1; \\</script><script type="math/tex; mode=display">
+③若f(a_0)f(x_1)>0,\ 取\ a_1=x_1,\ b_1=b_0; \\</script><script type="math/tex; mode=display">
+④则得到新的有根区间\ [a_1,b_1],\ 其区间长度恰好是\ [a_0,b_0]\ 长度的一半; \\</script><script type="math/tex; mode=display">
 ⑤重复上述操作，直至根的近似值达到精度要求结束二分法。</script></li>
 </ul>
 ]]></content>
