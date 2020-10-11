@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>软件测试复习笔记-Unit Testing</title>
+    <url>/2020/10/11/software-testing-notes-4/</url>
+    <content><![CDATA[<h2 id="What-is-Unit-Testing"><a href="#What-is-Unit-Testing" class="headerlink" title="What is Unit Testing?"></a>What is Unit Testing?</h2><h3 id="Software-Units"><a href="#Software-Units" class="headerlink" title="Software Units:"></a>Software Units:</h3><p>A unit is the smallest unit of the design in a software project</p>
+<ul>
+<li>In Java, a unit is a class or a method</li>
+<li>In C, a unit is a function or .h/.c files</li>
+</ul>
+<h3 id="Unit-Testing"><a href="#Unit-Testing" class="headerlink" title="Unit Testing:"></a>Unit Testing:</h3><p>A process to check that each unit is working correctly, according to the requirements and design</p>
+<ul>
+<li>Test each unit independently of other units</li>
+<li>We can use tools to help us, e.g. JUnit, but the tools aren’t required.</li>
+</ul>
+<h2 id="Something-should-be-concerned-when-doing-unit-testing"><a href="#Something-should-be-concerned-when-doing-unit-testing" class="headerlink" title="Something should be concerned when doing unit testing"></a>Something should be concerned when doing unit testing</h2><ul>
+<li>Focus on single SUT at a time</li>
+<li>Don’t test multiple units at once</li>
+</ul>
+<h2 id="Purpose-of-Unit-Testing"><a href="#Purpose-of-Unit-Testing" class="headerlink" title="Purpose of Unit Testing"></a>Purpose of Unit Testing</h2><ul>
+<li>Validate whether code is consistent with the design and requirements.</li>
+<li>Discover the errors between requirements , design and implementation.<ul>
+<li>Error of omission(what is required, but not implemented)</li>
+<li>Error of commission (an incorrect implementation)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Aims-of-Unit-Tests"><a href="#Aims-of-Unit-Tests" class="headerlink" title="Aims of Unit Tests"></a>Aims of Unit Tests</h2><ul>
+<li><strong>Aim:</strong> ensure that module was implemented correctly</li>
+<li><strong>Input: </strong>detailed specification</li>
+<li><strong>Process: </strong>design and implement tests and analyse results</li>
+<li><strong>Personnal: </strong>Developers and Testers</li>
+<li><strong>Test Approaches: </strong>black-box and white-box methods</li>
+<li><strong>Evaluation: </strong>determine if the tests reveal errors</li>
+</ul>
+<h2 id="Some-benefits-of-Unit-Testing"><a href="#Some-benefits-of-Unit-Testing" class="headerlink" title="Some benefits of Unit Testing"></a>Some benefits of Unit Testing</h2><ul>
+<li>The goal of unit testing is to isolate each part of the program and show that the individual parts are correct.</li>
+<li>A unit test provides a strict, written contract that the piece of code must satisfy.</li>
+<li>Easier to find issues when a test fails.</li>
+<li>Unit tests find problems early in the development cycle. Reduce the costs.</li>
+<li>Run the tests many times during development –easier to help with regression issues.</li>
+</ul>
+<h2 id="Aspects-of-unit-tests"><a href="#Aspects-of-unit-tests" class="headerlink" title="Aspects of unit tests"></a>Aspects of unit tests</h2><ul>
+<li>Unit interface (need to be tested)</li>
+<li>Functional tests - black box</li>
+<li>Structural tests - white box</li>
+<li>Error handling</li>
+<li>Incorrect input</li>
+</ul>
+<h2 id="Unit-Testing-with-a-Framework"><a href="#Unit-Testing-with-a-Framework" class="headerlink" title="Unit Testing with a Framework"></a>Unit Testing with a Framework</h2><h3 id="Desirable-features-of-a-unit-test-framework"><a href="#Desirable-features-of-a-unit-test-framework" class="headerlink" title="Desirable features of a unit test framework"></a>Desirable features of a unit test framework</h3><ul>
+<li>easy to write</li>
+<li>easy to learn to write</li>
+<li>quick to execute</li>
+<li>easy to execute</li>
+<li>isolated</li>
+<li>composable</li>
+</ul>
+<h3 id="Test-Fixtures-Setup-Teardown"><a href="#Test-Fixtures-Setup-Teardown" class="headerlink" title="Test Fixtures: Setup - Teardown"></a>Test Fixtures: Setup - Teardown</h3><ul>
+<li>Setup (might use common setup, e.g. @Before)</li>
+<li>Exercise- call methods on the SUT</li>
+<li>Verify(Assertions…)</li>
+<li>Teardown (optional, e.g. @AfterEach, @AfterAll)</li>
+</ul>
+<h2 id="Traditional-unit-testing-strategies"><a href="#Traditional-unit-testing-strategies" class="headerlink" title="Traditional unit testing strategies"></a>Traditional unit testing strategies</h2><h3 id="Top-down-unit-testing-strategy"><a href="#Top-down-unit-testing-strategy" class="headerlink" title="Top-down unit testing strategy"></a>Top-down unit testing strategy</h3><ul>
+<li>Test the top level first. Create test-doubles for units called by the top-level. Create driver for top-level. Then, use the tested unit as the driver for next level.</li>
+</ul>
+<h3 id="Bottom-up-unit-testing-strategy"><a href="#Bottom-up-unit-testing-strategy" class="headerlink" title="Bottom-up unit testing strategy"></a>Bottom-up unit testing strategy</h3><ul>
+<li>Test the bottom modules first. Create a driver module for it. When tested, move to next module up, creating a new driver. The tested lower-level module can be used instead of a stub.</li>
+</ul>
+<h3 id="Isolation-testing"><a href="#Isolation-testing" class="headerlink" title="Isolation testing"></a>Isolation testing</h3><ul>
+<li>Do not consider the relationship between modules. Design test doubles and driver for every unit.</li>
+</ul>
+<h2 id="Test-Doubles"><a href="#Test-Doubles" class="headerlink" title="Test Doubles"></a>Test Doubles</h2><h3 id="Why-we-need-use-test-doubles"><a href="#Why-we-need-use-test-doubles" class="headerlink" title="Why we need use test doubles?"></a>Why we need use test doubles?</h3><p>There are times in testing when we need to use <strong>test doubles,</strong>  which are units that are used to replace a real part of the system for test purposes. Some examples:</p>
+<ul>
+<li>Databases</li>
+<li>Code that is not ready yet</li>
+<li>External hardware</li>
+<li>Components that do not return values</li>
+</ul>
+<p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201011/notes-4-1.png" alt="testing workflow"></p>
+<h3 id="Types-pf-Test-Double"><a href="#Types-pf-Test-Double" class="headerlink" title="Types pf Test Double"></a>Types pf Test Double</h3><ul>
+<li>Dummy Object</li>
+<li>Test Stub</li>
+<li>Mock Object</li>
+<li>Fake Object</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Software Testing notes</category>
+      </categories>
+      <tags>
+        <tag>Software Testing</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>软件测试复习笔记-White-Box Testing</title>
+    <url>/2020/10/11/software-testing-notes-3/</url>
+    <content><![CDATA[<blockquote>
+<p>White-box testing –testing based on the logic in a program</p>
+</blockquote>
+<p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201011/notes-3-1.png" alt></p>
+]]></content>
+      <categories>
+        <category>Software Testing notes</category>
+      </categories>
+      <tags>
+        <tag>Software Testing</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件测试复习笔记-introduction</title>
     <url>/2020/10/11/softeware-testing-notes-1/</url>
     <content><![CDATA[<h2 id="Errors-Faults-and-Failures"><a href="#Errors-Faults-and-Failures" class="headerlink" title="Errors, Faults and Failures"></a>Errors, Faults and Failures</h2><p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201011/notes-1-1.png" alt></p>
