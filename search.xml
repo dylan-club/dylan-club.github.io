@@ -84,6 +84,28 @@
 <li>Mock Object</li>
 <li>Fake Object</li>
 </ul>
+<h3 id="Dummy-Object"><a href="#Dummy-Object" class="headerlink" title="Dummy Object"></a>Dummy Object</h3><ul>
+<li>An SUT requires a data value as a part of test<ul>
+<li>It does not matter what value is actually in the data value, it just needs to exist</li>
+</ul>
+</li>
+<li>In some situations, the value nullmight be used. It depends on what the SUT will do with the value.<ul>
+<li>e.g. service.getOne(new QueryWrapper()); // it just need a wraaper</li>
+</ul>
+</li>
+</ul>
+<h3 id="Test-Stub"><a href="#Test-Stub" class="headerlink" title="Test Stub"></a>Test Stub</h3><ul>
+<li>it just need a value (a correct value, error value, log value)</li>
+<li>e.g. Data logging software</li>
+</ul>
+<h3 id="Mock-Object"><a href="#Mock-Object" class="headerlink" title="Mock Object"></a>Mock Object</h3><ul>
+<li>A Mock Object is setup with information about what calls it should expect. It might also be setup with details of the data it should expect.</li>
+<li>Mock Objects are testing the behaviourof the interaction between the SUT and DOC</li>
+<li>A number of values in one unit testing(interaction)</li>
+</ul>
+<h3 id="Fake-Object"><a href="#Fake-Object" class="headerlink" title="Fake Object"></a>Fake Object</h3><ul>
+<li>An object that replaces the functionality of the DOC</li>
+</ul>
 ]]></content>
       <categories>
         <category>Software Testing notes</category>
