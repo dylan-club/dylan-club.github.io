@@ -252,6 +252,21 @@ R[f] \le \frac{M_4}{2880}(b-a)^5</script>]]></content>
 <p>White-box testing –testing based on the logic in a program</p>
 </blockquote>
 <p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201011/notes-3-1.png" alt></p>
+<h2 id="Some-descriptions-about-White-box-Testing"><a href="#Some-descriptions-about-White-box-Testing" class="headerlink" title="Some descriptions about White-box Testing"></a>Some descriptions about White-box Testing</h2><ul>
+<li>White-box is based on the implementation</li>
+<li>For high confidence, e.g. in safety critical software, need to look at the code and make sure every possibility is covered(<strong>Not all software</strong>)</li>
+<li>Still worth doing black-box testing then look at EXTRA tests based on white-box approaches</li>
+</ul>
+<h2 id="White-box-Testing-types"><a href="#White-box-Testing-types" class="headerlink" title="White-box Testing types"></a>White-box Testing types</h2><ul>
+<li>Static Analysis</li>
+<li>Dynamic Testing with path coverage of code</li>
+</ul>
+<h2 id="Static-Analysis"><a href="#Static-Analysis" class="headerlink" title="Static Analysis"></a>Static Analysis</h2><ul>
+<li>Discussed during the Software Lifecycle course</li>
+<li>Code Inspection(代码检查)</li>
+<li>The analysis cannot be automated</li>
+<li>BUT, code inspections are an effective way to detect potential problems</li>
+</ul>
 ]]></content>
       <categories>
         <category>Software Testing notes</category>
