@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>软件测试复习笔记-Integration Testing | Dylan's Blog</title><meta name="keywords" content="Software Testing"><meta name="author" content="Dylan"><meta name="copyright" content="Dylan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><meta name="description" content="chapter 5 of Software Testing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件测试复习笔记-Integration Testing">
+<meta property="og:url" content="http://www.dylan-club.top/2020/10/15/software-testing-notes-5/index.html">
+<meta property="og:site_name" content="Dylan&#39;s Blog">
+<meta property="og:description" content="chapter 5 of Software Testing">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/default_cover.jpg">
+<meta property="article:published_time" content="2020-10-15T07:17:36.000Z">
+<meta property="article:modified_time" content="2020-10-15T08:29:05.390Z">
+<meta property="article:author" content="Dylan">
+<meta property="article:tag" content="Software Testing">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/default_cover.jpg"><link rel="shortcut icon" href="/images/16x16.png"><link rel="canonical" href="http://www.dylan-club.top/2020/10/15/software-testing-notes-5/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  hexoversion: '4.2.0',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  ClickShowText: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  justifiedGallery: {
+    js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+    css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+};
+
+var saveToLocal = {
+  set: function setWithExpiry(key, value, ttl) {
+    const now = new Date()
+    const expiryDay = ttl * 86400000
+    const item = {
+      value: value,
+      expiry: now.getTime() + expiryDay,
+    }
+    localStorage.setItem(key, JSON.stringify(item))
+  },
+
+  get: function getWithExpiry(key) {
+    const itemStr = localStorage.getItem(key)
+
+    if (!itemStr) {
+      return undefined
+    }
+    const item = JSON.parse(itemStr)
+    const now = new Date()
+
+    if (now.getTime() > item.expiry) {
+      localStorage.removeItem(key)
+      return undefined
+    }
+    return item.value
+  }
+}</script><script id="config_change">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isSidebar: true,
+  postUpdate: '2020-10-15 16:29:05'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(function () {
+  window.activateDarkMode = function () {
+    document.documentElement.setAttribute('data-theme', 'dark')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+    }
+  }
+  window.activateLightMode = function () {
+    document.documentElement.setAttribute('data-theme', 'light')
+    if (document.querySelector('meta[name="theme-color"]') !== null) {
+      document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+    }
+  }
+
+  const autoChangeMode = 'false'
+  const t = saveToLocal.get('theme')
+  if (autoChangeMode === '1') {
+    const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+    const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+    const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+    const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+    if (t === undefined) {
+      if (isLightMode) activateLightMode()
+      else if (isDarkMode) activateDarkMode()
+      else if (isNotSpecified || hasNoSupport) {
+        const now = new Date()
+        const hour = now.getHours()
+        const isNight = hour <= 6 || hour >= 18
+        isNight ? activateDarkMode() : activateLightMode()
+      }
+      window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+        if (saveToLocal.get('theme') === undefined) {
+          e.matches ? activateDarkMode() : activateLightMode()
+        }
+      })
+    } else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else if (autoChangeMode === '2') {
+    const now = new Date()
+    const hour = now.getHours()
+    const isNight = hour <= 6 || hour >= 18
+    if (t === undefined) isNight ? activateDarkMode() : activateLightMode()
+    else if (t === 'light') activateLightMode()
+    else activateDarkMode()
+  } else {
+    if (t === 'dark') activateDarkMode()
+    else if (t === 'light') activateLightMode()
+  }
+})()</script><meta name="generator" content="Hexo 4.2.0"></head><body><div id="mobile-sidebar"><div id="menu_mask"></div><div id="mobile-sidebar-menus"><div class="mobile_author_icon"><img class="avatar-img" src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/avatar.jpeg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="mobile_post_data"><div class="mobile_data_item is-center"><div class="mobile_data_link"><a href="/archives/"><div class="headline">文章</div><div class="length_num">31</div></a></div></div><div class="mobile_data_item is-center">      <div class="mobile_data_link"><a href="/tags/"><div class="headline">标签</div><div class="length_num">12</div></a></div></div><div class="mobile_data_item is-center">     <div class="mobile_data_link"><a href="/categories/"><div class="headline">分类</div><div class="length_num">5</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div></div></div><div id="body-wrap"><div id="sidebar"><i class="fas fa-arrow-right on" id="toggle-sidebar"></i><div class="sidebar-toc"><div class="sidebar-toc__title">目录</div><div class="sidebar-toc__progress"><span class="progress-notice">你已经读了</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar">     </div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Integration-Testing"><span class="toc-number">1.</span> <span class="toc-text">What is Integration Testing</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integration-Testing-Cycle"><span class="toc-number">2.</span> <span class="toc-text">Integration Testing Cycle</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Integration-Testing-Strategy"><span class="toc-number">3.</span> <span class="toc-text">Integration Testing Strategy</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Big-bang-Integration"><span class="toc-number">3.1.</span> <span class="toc-text">Big-bang Integration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Top-down-Integration"><span class="toc-number">3.2.</span> <span class="toc-text">Top-down Integration</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Bottom-up-Inegration"><span class="toc-number">3.3.</span> <span class="toc-text">Bottom-up Inegration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-often-should-we-run-integration-tests"><span class="toc-number">4.</span> <span class="toc-text">How often  should we run integration tests?</span></a></li></ol></div></div></div><header class="post-bg" id="page-header" style="background-image: url(https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/default_cover.jpg)"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Dylan's Blog</a></span><span id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div></div><span class="close" id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></span></span></nav><div id="post-info"><div id="post-title"><div class="posttitle">软件测试复习笔记-Integration Testing</div></div><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2020-10-15T07:17:36.000Z" title="发表于 2020-10-15 15:17:36">2020-10-15</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2020-10-15T08:29:05.390Z" title="更新于 2020-10-15 16:29:05">2020-10-15</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Software-Testing-notes/">Software Testing notes</a></span></div><div class="meta-secondline"> <span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">283</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>1分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout_post" id="content-inner"><article id="post"><div class="post-content" id="article-container"><h2 id="What-is-Integration-Testing"><a href="#What-is-Integration-Testing" class="headerlink" title="What is Integration Testing"></a>What is Integration Testing</h2><ul>
+<li><strong>Integration testing</strong> is the phase of software testing in which individual software modules are combined and tested as a group.</li>
+<li>When should this happen?<ul>
+<li>Integration testing follows unit testing and precedes system testing.</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/20201015/notes-5-1.png" alt="V-model"></p>
+<h2 id="Integration-Testing-Cycle"><a href="#Integration-Testing-Cycle" class="headerlink" title="Integration Testing Cycle"></a>Integration Testing Cycle</h2><ul>
+<li>Integration is conducted incrementally as a series of test cycles</li>
+<li>Additional modules are integrated in each cycle</li>
+<li>Continues util all modules are integrated</li>
+</ul>
+<h2 id="Integration-Testing-Strategy"><a href="#Integration-Testing-Strategy" class="headerlink" title="Integration Testing Strategy"></a>Integration Testing Strategy</h2><ul>
+<li>Big Bang</li>
+<li>Top-Down</li>
+<li>Bottom-Up</li>
+</ul>
+<h3 id="Big-bang-Integration"><a href="#Big-bang-Integration" class="headerlink" title="Big-bang Integration"></a>Big-bang Integration</h3><ul>
+<li>Link all of the modules together as a system</li>
+<li>Limited need for test doubles and drivers</li>
+<li>Difficult to isolate errors and identify where the problem occurs</li>
+<li>Do not verify the interfaces across the module boundaries</li>
+<li>Risk of late identification of problems</li>
+</ul>
+<h3 id="Top-down-Integration"><a href="#Top-down-Integration" class="headerlink" title="Top-down Integration"></a>Top-down Integration</h3><ul>
+<li>As the system is constructed, test the interactions of modules from the ‘top’ down to the lower level modules</li>
+<li>‘top’ is the module that calls other modules</li>
+<li>Breadth-first and Depth-first approaches</li>
+<li>Test doubles can be used for some tests</li>
+</ul>
+<h3 id="Bottom-up-Inegration"><a href="#Bottom-up-Inegration" class="headerlink" title="Bottom-up Inegration"></a>Bottom-up Inegration</h3><ul>
+<li>Start with bottom-level components, which have no, or minimal, dependencies</li>
+<li>Move up through connectons, verifying the interactions of modules</li>
+<li>Driver modules used to test the integrated modules</li>
+<li>It is likely that there is less need for Test Doubles because the lower levels will already exist(But, we maybe use test doubles for other reasons)</li>
+</ul>
+<h2 id="How-often-should-we-run-integration-tests"><a href="#How-often-should-we-run-integration-tests" class="headerlink" title="How often  should we run integration tests?"></a>How often  should we run integration tests?</h2><ul>
+<li>Regular integration<ul>
+<li>Daily</li>
+<li>In an iteration (e.g. two weeks)</li>
+</ul>
+</li>
+<li>Automated tests</li>
+<li>A popular modern approach is to run a set of tests regularly as code is checked in –idea of Continuous Integration (CI)<ul>
+<li>We will come back to this in a future session</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Focus is on data that will be passed through the interface to other module</p>
+</blockquote>
+</div><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="mailto:undefined">Dylan</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://www.dylan-club.top/2020/10/15/software-testing-notes-5/">http://www.dylan-club.top/2020/10/15/software-testing-notes-5/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://www.dylan-club.top" target="_blank">Dylan's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Software-Testing/">Software Testing</a></div><div class="post_share"><div class="social-share" data-image="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/default_cover.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2020/10/15/algorithm-2/"><img class="next-cover" src="https://nicklaus-edu.oss-cn-beijing.aliyuncs.com/blog/default/default_cover.jpg" onerror="onerror=null;src='/img/404.jpg'"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">做算法题中常用的Java的Collections API</div></div></a></div></nav></article></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 By Dylan</div><div class="framework-info"><span>框架 </span><a href="https://hexo.io" target="_blank" rel="noopener">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a href="https://github.com/jerryc127/hexo-theme-butterfly" target="_blank" rel="noopener">Butterfly</a></div></div></footer></div><section id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></section><div><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><div class="js-pjax"><script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></div></body></html>
