@@ -14,7 +14,7 @@
 <h2 id="Integration-Testing-Cycle"><a href="#Integration-Testing-Cycle" class="headerlink" title="Integration Testing Cycle"></a>Integration Testing Cycle</h2><ul>
 <li>Integration is conducted incrementally as a series of test cycles</li>
 <li>Additional modules are integrated in each cycle</li>
-<li>Continues util all modules are integrated</li>
+<li>Continues until all modules are integrated</li>
 </ul>
 <h2 id="Integration-Testing-Strategy"><a href="#Integration-Testing-Strategy" class="headerlink" title="Integration Testing Strategy"></a>Integration Testing Strategy</h2><ul>
 <li>Big Bang</li>
@@ -349,6 +349,7 @@ R[f] \le \frac{M_4}{2880}(b-a)^5</script>]]></content>
 <li>Verify(Assertions…)</li>
 <li>Teardown (optional, e.g. @AfterEach, @AfterAll)</li>
 </ul>
+<p>(steps: Setup fixtures -&gt; Setup test -&gt; execute test -&gt; check result -&gt; teardown fixtures)</p>
 <h2 id="Traditional-unit-testing-strategies"><a href="#Traditional-unit-testing-strategies" class="headerlink" title="Traditional unit testing strategies"></a>Traditional unit testing strategies</h2><h3 id="Top-down-unit-testing-strategy"><a href="#Top-down-unit-testing-strategy" class="headerlink" title="Top-down unit testing strategy"></a>Top-down unit testing strategy</h3><ul>
 <li>Test the top level first. Create test-doubles for units called by the top-level. Create driver for top-level. Then, use the tested unit as the driver for next level.</li>
 </ul>
@@ -377,7 +378,7 @@ R[f] \le \frac{M_4}{2880}(b-a)^5</script>]]></content>
 <li>It does not matter what value is actually in the data value, it just needs to exist</li>
 </ul>
 </li>
-<li>In some situations, the value nullmight be used. It depends on what the SUT will do with the value.<ul>
+<li>In some situations, the value null might be used. It depends on what the SUT will do with the value.<ul>
 <li>e.g. service.getOne(new QueryWrapper()); // it just need a wraaper</li>
 </ul>
 </li>
@@ -388,7 +389,7 @@ R[f] \le \frac{M_4}{2880}(b-a)^5</script>]]></content>
 </ul>
 <h3 id="Mock-Object"><a href="#Mock-Object" class="headerlink" title="Mock Object"></a>Mock Object</h3><ul>
 <li>A Mock Object is setup with information about what calls it should expect. It might also be setup with details of the data it should expect.</li>
-<li>Mock Objects are testing the behaviourof the interaction between the SUT and DOC</li>
+<li>Mock Objects are testing the behaviour of the interaction between the SUT and DOC</li>
 <li>A number of values in one unit testing(interaction)</li>
 </ul>
 <h3 id="Fake-Object"><a href="#Fake-Object" class="headerlink" title="Fake Object"></a>Fake Object</h3><ul>
