@@ -223,8 +223,10 @@
 <p>队列特点：先进先出</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Queue&lt;Integer&gt; queue = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">queue.offer(<span class="number">1</span>); <span class="comment">// 1.从队尾插入一个元素</span></span><br><span class="line">queue.poll(); <span class="comment">// 2.返回并从队首弹出一个元素</span></span><br><span class="line">queue.peek(); <span class="comment">// 3.返回队首元素</span></span><br><span class="line">queue.isEmpty(); <span class="comment">// 4.判断队列是否为空</span></span><br><span class="line">queue.size(); <span class="comment">// 5.返回队列元素的个数</span></span><br></pre></td></tr></table></figure>
-<h3 id="作为双端队列-Deque-使用"><a href="#作为双端队列-Deque-使用" class="headerlink" title="作为双端队列(Deque)使用"></a>作为双端队列(Deque)使用</h3><blockquote>
-<p>双端队列特点：队首和队尾均可插入和弹出</p>
+<blockquote>
+<p>补充：使用数组队列ArrayDeque的速度要比LinkedList快！</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line">&gt;Deque&lt;Integer&gt; queue = <span class="keyword">new</span> ArrayDeque&lt;&gt;();</span><br></pre></td></tr></table></figure>
+<h3 id="作为双端队列-Deque-使用"><a href="#作为双端队列-Deque-使用" class="headerlink" title="作为双端队列(Deque)使用"></a>作为双端队列(Deque)使用</h3><p>双端队列特点：队首和队尾均可插入和弹出</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="code"><pre><span class="line">Deque&lt;Integer&gt; deque = <span class="keyword">new</span> LinkedList&lt;&gt;();</span><br><span class="line">deque.offer(<span class="number">1</span>); <span class="comment">// 1.从队尾插入一个元素 &gt;&gt; 1</span></span><br><span class="line">deque.offerFirst(<span class="number">2</span>); <span class="comment">//2.从队首插入一个元素 &gt;&gt; 2 1</span></span><br><span class="line">deque.offerLast(<span class="number">3</span>); <span class="comment">//3.从队尾插入一个元素 &gt;&gt; 2 1 3</span></span><br><span class="line">deque.peekFirst(); <span class="comment">//4.返回队首元素</span></span><br><span class="line">deque.peekLast(); <span class="comment">//5.返回队尾元素</span></span><br><span class="line">deque.pollFirst(); <span class="comment">//6.返回并弹出队首元素 &gt;&gt; 1 3</span></span><br><span class="line">deque.pollLast(); <span class="comment">//7.返回并弹出队尾元素 &gt;&gt; 1</span></span><br><span class="line">deque.isEmpty();</span><br><span class="line">deque.size();</span><br></pre></td></tr></table></figure>
 <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><blockquote>
