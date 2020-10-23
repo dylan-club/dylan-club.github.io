@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Java中的位运算符总结以及算法技巧</title>
+    <url>/2020/10/23/algorithm-4/</url>
+    <content><![CDATA[<blockquote>
+<p>本文参考博文原文链接：<strong><a href="https://www.cnblogs.com/lichengze/p/5713409.html" target="_blank" rel="noopener">https://www.cnblogs.com/lichengze/p/5713409.html</a></strong></p>
+</blockquote>
+<h2 id="amp-运算符"><a href="#amp-运算符" class="headerlink" title="&amp;运算符"></a>&amp;运算符</h2><p><strong>比如两个整型（int）数字使用&amp;运算符，那么将这两个数转换成二进制表示形式，两个数的每一位进行比较，如果两位均为以1，则该位为1，否则为0</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//a = 5; 二进制表示形式 101</span></span><br><span class="line"><span class="comment">//b = 3; 二进制表示形式 011</span></span><br><span class="line"><span class="keyword">int</span> c = a &amp; b;</span><br><span class="line">print c; <span class="comment">// &gt; 结果的二进制表示形式 001</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h3><h4 id="判断某一个数的二进制表示形式最后一位是否为1"><a href="#判断某一个数的二进制表示形式最后一位是否为1" class="headerlink" title="判断某一个数的二进制表示形式最后一位是否为1"></a>判断某一个数的二进制表示形式最后一位是否为1</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">3369</span>;</span><br><span class="line"><span class="keyword">int</span> b = a &amp; <span class="number">1</span>;</span><br><span class="line">&gt; 如果a最后一位是<span class="number">1</span>,b == <span class="number">1</span>; 反之, b == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="运算符"><a href="#运算符" class="headerlink" title="| 运算符"></a>| 运算符</h2><p><strong>将两个整型（int）数字使用&amp;运算符，那么将这两个数转换成二进制表示形式，两个数的每一位进行比较，如果两位中至少有一位是1，则该位为1，否则为0</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//a = 5; 二进制表示形式 101</span></span><br><span class="line"><span class="comment">//b = 3; 二进制表示形式 011</span></span><br><span class="line"><span class="keyword">int</span> c = a | b;</span><br><span class="line">print c; <span class="comment">// &gt; 结果的二进制表示形式 111 (十进制表示形式为7)</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用-1"><a href="#应用-1" class="headerlink" title="应用"></a>应用</h3><h4 id="可以还原一个整数"><a href="#可以还原一个整数" class="headerlink" title="可以还原一个整数"></a>可以还原一个整数</h4><p><strong>比如我们在做算法题时，我们只能依次从高位向低位得到一个数的某一位1，如何还原这个数？</strong></p>
+<blockquote>
+<p>第一个bit位为$(1000)_2$，即 bit1 = 8;</p>
+<p>第二个bit位为$(0010)_2$，即bit2 = 2;</p>
+<p>第三个bit位为$(0001)_2$，即bit3 = 1;</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> realNum = bit1 | bit2 | bit3;</span><br><span class="line">&gt; print realNum <span class="number">11</span></span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="运算符-1"><a href="#运算符-1" class="headerlink" title="~ 运算符"></a>~ 运算符</h2><p><strong>在一个整型（int）数字前使用~运算符，就是将这个数的二进制表示形式的每一位取反，即如果该位是1就会变成0；反之，就会由0变成1</strong></p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">8</span>;</span><br><span class="line"><span class="comment">// 二进制表示形式 00000000000000000000000000001000</span></span><br><span class="line">System.out.println(Integer.toBinaryString(a)); </span><br><span class="line"><span class="comment">// 二进制表示形式 11111111111111111111111111110111</span></span><br><span class="line">System.out.println(Integer.toBinaryString(~a));</span><br><span class="line">System.out.println(~a); <span class="comment">// -9</span></span><br></pre></td></tr></table></figure>
+<h3 id="应用-2"><a href="#应用-2" class="headerlink" title="应用"></a>应用</h3><h4 id="不使用—运算符表示一个数的负数"><a href="#不使用—运算符表示一个数的负数" class="headerlink" title="不使用—运算符表示一个数的负数"></a>不使用—运算符表示一个数的负数</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="comment">//如何表示-8</span></span><br><span class="line"><span class="keyword">int</span> neA = (~a) + <span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="返回一个数的最后一位1的十进制表示形式"><a href="#返回一个数的最后一位1的十进制表示形式" class="headerlink" title="返回一个数的最后一位1的十进制表示形式"></a>返回一个数的最后一位1的十进制表示形式</h4><figure class="highlight java"><table><tr><td class="code"><pre><span class="line">n &amp; -n; <span class="comment">//根据取反+1来理解就容易多了</span></span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+        <tag>位运算</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>软件测试复习笔记-Testing Management</title>
     <url>/2020/10/22/software-testing-notes-8/</url>
     <content><![CDATA[<h1 id="Software-QA-and-Test-Management"><a href="#Software-QA-and-Test-Management" class="headerlink" title="Software QA and Test Management"></a>Software QA and Test Management</h1><h2 id="Why-do-we-test-software"><a href="#Why-do-we-test-software" class="headerlink" title="Why do we test software ?"></a>Why do we test software ?</h2><ul>
