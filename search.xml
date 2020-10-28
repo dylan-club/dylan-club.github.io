@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hash表的基本原理以及Java的hash表部分源码的个人理解</title>
+    <url>/2020/10/28/java-basic-1/</url>
+    <content><![CDATA[<blockquote>
+<p>有关Java的哈希表源码讲解比较好的几篇博文：</p>
+<ol>
+<li><a href="https://www.cnblogs.com/xuxinstyle/p/9537249.html" target="_blank" rel="noopener">HashMap常见面试题总结</a></li>
+<li><a href="https://blog.csdn.net/qq_35967283/article/details/86497796" target="_blank" rel="noopener">ConcurrentHashMap的工作原理</a></li>
+<li><a href="https://blog.csdn.net/weixin_43892898/article/details/88979688" target="_blank" rel="noopener">Hashtable和HashMap的区别和联系</a></li>
+</ol>
+</blockquote>
+<h2 id="Hash表的基本原理"><a href="#Hash表的基本原理" class="headerlink" title="Hash表的基本原理"></a>Hash表的基本原理</h2><p>​    hash表是根据索引快速定位数据的一种数据结构，在<sup><a href="#fn_理想情况" id="reffn_理想情况">理想情况</a></sup>下，它的增删查改的时间复杂度都是O(1)的。简单来说，比如有1111，2222， 3333, …. , 5689这些数，我想知道9527这个数存不存在，最简单的方式就是将这个数列遍历一遍，找出是否存在这个数，但是如果数据量特别大比如10亿，显然这样做的效率是特别低的。hash表就是先将每一个数先通过<strong>hash函数</strong>存进一个数组中，当我要查询9527这个数的时候，再通过hash函数找到这个数的下标，这个操作是O(1)的！因此hash表在理想状况下是高效的。</p>
+<h2 id="Hash表解决冲突的两种方式"><a href="#Hash表解决冲突的两种方式" class="headerlink" title="Hash表解决冲突的两种方式"></a>Hash表解决冲突的两种方式</h2><h3 id="拉链法"><a href="#拉链法" class="headerlink" title="拉链法"></a>拉链法</h3><h3 id="线性探测法-开放地址法"><a href="#线性探测法-开放地址法" class="headerlink" title="线性探测法(开放地址法)"></a>线性探测法(开放地址法)</h3><h2 id="Java中的HashTable"><a href="#Java中的HashTable" class="headerlink" title="Java中的HashTable"></a>Java中的HashTable</h2><h2 id="Java中的HashMap"><a href="#Java中的HashMap" class="headerlink" title="Java中的HashMap"></a>Java中的HashMap</h2><h2 id="Java中的ConcurrentHashMap"><a href="#Java中的ConcurrentHashMap" class="headerlink" title="Java中的ConcurrentHashMap"></a>Java中的ConcurrentHashMap</h2><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><blockquote id="fn_理想情况">
+<sup>理想情况</sup>. 即任何两个数经过hash函数的索引得到的值都是唯一的，但往往这种状况很难实现。<a href="#reffn_理想情况" title="Jump back to footnote [理想情况] in the text."> &#8617;</a>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Java</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>HashMap</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Java中的位运算符总结以及算法技巧</title>
     <url>/2020/10/23/algorithm-4/</url>
     <content><![CDATA[<h2 id="amp-运算符"><a href="#amp-运算符" class="headerlink" title="&amp;运算符"></a>&amp;运算符</h2><p><strong>比如两个整型（int）数字使用&amp;运算符，那么将这两个数转换成二进制表示形式，两个数的每一位进行比较，如果两位均为以1，则该位为1，否则为0</strong></p>
@@ -53,6 +77,10 @@
 <blockquote>
 <p>Java是使用补码进行整数运算的！</p>
 </blockquote>
+<h2 id="综合运用：不使用“-”实现两个数相加"><a href="#综合运用：不使用“-”实现两个数相加" class="headerlink" title="综合运用：不使用“+ - * /”实现两个数相加"></a>综合运用：不使用“+ - * /”实现两个数相加</h2><blockquote>
+<p>分析：a ^ b 异或是不进位加法， a &amp; b &lt;&lt; 1 与是计算两个数相加的进位，所以可以使用一个循环，重复计算直到进位0！</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> a = <span class="number">10</span>, b = <span class="number">5</span>;</span><br><span class="line"><span class="keyword">while</span>(b != <span class="number">0</span>)&#123;</span><br><span class="line">    <span class="keyword">int</span> c = (a &amp; b) &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    a = a ^ b;</span><br><span class="line">    b = c;</span><br><span class="line">&#125;</span><br><span class="line">System.out.println(a);</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Java</category>
