@@ -1805,4 +1805,20 @@ A_2 = \int_{-1}^1x^2\frac{x-x_1}{x_2-x_1}dx=\frac{1}{3}</script>]]></content>
         <tag>快速幂</tag>
       </tags>
   </entry>
+  <entry>
+    <title>浅析Android的RecyclerView中使用的适配器模式</title>
+    <url>/2020/11/29/Android-2/</url>
+    <content><![CDATA[<blockquote>
+<p>待更新😄</p>
+</blockquote>
+<h2 id="什么是适配器模式"><a href="#什么是适配器模式" class="headerlink" title="什么是适配器模式"></a>什么是适配器模式</h2><h3 id="源自菜鸟教程的解释"><a href="#源自菜鸟教程的解释" class="headerlink" title="源自菜鸟教程的解释"></a>源自菜鸟教程的解释</h3><h3 id="UML"><a href="#UML" class="headerlink" title="UML"></a>UML</h3><h3 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h3><h2 id="看一看RecyclerView平常都是如何使用的"><a href="#看一看RecyclerView平常都是如何使用的" class="headerlink" title="看一看RecyclerView平常都是如何使用的"></a>看一看RecyclerView平常都是如何使用的</h2><h2 id="RecyclerView中的Adapter分析"><a href="#RecyclerView中的Adapter分析" class="headerlink" title="RecyclerView中的Adapter分析"></a>RecyclerView中的Adapter分析</h2>]]></content>
+      <categories>
+        <category>Android</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+        <tag>Android</tag>
+        <tag>设计模式</tag>
+      </tags>
+  </entry>
 </search>
